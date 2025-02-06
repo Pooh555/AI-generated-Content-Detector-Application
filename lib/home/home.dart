@@ -1,3 +1,4 @@
+import 'package:ai_generated_content_detector/home/service_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:ai_generated_content_detector/home/carousel.dart';
 import 'package:ai_generated_content_detector/home/text.dart';
@@ -37,6 +38,17 @@ class _HomePageState extends State<HomePage> {
               Align(
                 alignment: Alignment.centerLeft,
                 child: const ServicesText(),
+              ),
+              ConstrainedBox(
+                constraints: const BoxConstraints(maxHeight: 200),
+                child: CarouselView(
+                  itemExtent: 330,
+                  shrinkExtent: 200,
+                  children: List<Widget>.generate(20, (int index) {
+                    return UncontainedLayoutCard(
+                        index: index, label: 'Show $index');
+                  }),
+                ),
               ),
               Align(
                 alignment: Alignment.centerLeft,
