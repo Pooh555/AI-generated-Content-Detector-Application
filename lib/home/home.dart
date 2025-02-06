@@ -1,3 +1,4 @@
+import 'package:ai_generated_content_detector/home/text.dart';
 import 'package:flutter/material.dart';
 import 'package:ai_generated_content_detector/home/carousel.dart';
 
@@ -19,10 +20,15 @@ class _HomePageState extends State<HomePage> {
             backgroundColor: Theme.of(context).colorScheme.inversePrimary,
           ),
         ),
-        body: Column(
-          children: [
-            const CarouselPanel(),
-          ],
+        body: Center(
+          child: Column(
+            children: [
+              const Padding(padding: EdgeInsets.only(top: 50)),
+              const WelcomeText(),
+              const Padding(padding: EdgeInsets.only(top: 50)),
+              const CarouselPanel(),
+            ],
+          ),
         ));
   }
 }

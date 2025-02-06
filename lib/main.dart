@@ -1,3 +1,4 @@
+import 'package:ai_generated_content_detector/Themes/font.dart';
 import 'package:ai_generated_content_detector/Themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'home/home.dart';
@@ -15,6 +16,7 @@ class MyApp extends StatelessWidget {
       title: 'AI detector',
       theme: ThemeData(
         colorScheme: darkDefault(context),
+        textTheme: defaultTextTheme(context),
         useMaterial3: true,
       ),
       home: const HomePage(title: "Home"),
