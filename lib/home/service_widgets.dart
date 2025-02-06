@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-List<String> quickServicesList = [
+List<String> quickMenuList = [
   "Image",
   "Text",
   "Video",
@@ -27,7 +27,7 @@ class UncontainedLayoutCard extends StatelessWidget {
       color: colorScheme.onSecondary,
       child: Center(
         child: Text(
-          quickServicesList[index],
+          quickMenuList[index],
           style: textTheme.labelLarge,
           overflow: TextOverflow.clip,
           softWrap: false,
