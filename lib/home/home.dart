@@ -35,20 +35,21 @@ class _HomePageState extends State<HomePage> {
                 alignment: Alignment.centerLeft,
                 child: const QuickMenuText(),
               ),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: const ServicesText(),
-              ),
               ConstrainedBox(
                 constraints: const BoxConstraints(maxHeight: 200),
                 child: CarouselView(
                   itemExtent: 330,
                   shrinkExtent: 200,
-                  children: List<Widget>.generate(20, (int index) {
+                  children:
+                      List<Widget>.generate(quickMenuList.length, (int index) {
                     return UncontainedLayoutCard(
-                        index: index, label: 'Show $index');
+                        index: index, label: quickMenuList[index]);
                   }),
                 ),
+              ),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: const ServicesText(),
               ),
               Align(
                 alignment: Alignment.centerLeft,
