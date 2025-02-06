@@ -1,3 +1,4 @@
+import 'package:ai_generated_content_detector/Themes/varaibles.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import '../Themes/path.dart';
@@ -42,7 +43,10 @@ class _CarouselPanelState extends State<CarouselPanel> {
             return Container(
               width: MediaQuery.of(context).size.width,
               margin: EdgeInsets.symmetric(horizontal: 0.0),
-              child: Image.asset(imagePath, fit: BoxFit.cover),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(widgetBorderRadius),
+                child: Image.asset(imagePath, fit: BoxFit.cover),
+              ),
             );
           },
         );
