@@ -32,7 +32,15 @@ class _HomePageState extends State<HomePage> {
               const Padding(padding: EdgeInsets.only(top: 25)),
               Align(
                 alignment: Alignment.centerLeft,
+                child: const QuickMenuText(),
+              ),
+              Align(
+                alignment: Alignment.centerLeft,
                 child: const ServicesText(),
+              ),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: const UtilitiesText(),
               ),
             ],
           ),
