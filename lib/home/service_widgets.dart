@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 
+List<String> quickServicesList = [
+  "Image",
+  "Text",
+  "Video",
+  "Voice",
+];
+
 class UncontainedLayoutCard extends StatelessWidget {
-  const UncontainedLayoutCard({
+  UncontainedLayoutCard({
     super.key,
     required this.index,
     required this.label,
@@ -12,12 +19,16 @@ class UncontainedLayoutCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Accessing the custom TextTheme from the app's theme
+    TextTheme textTheme = Theme.of(context).textTheme;
+    ColorScheme colorScheme = Theme.of(context).colorScheme;
+
     return ColoredBox(
-      color: Colors.primaries[index % Colors.primaries.length].withOpacity(0.5),
+      color: colorScheme.onSecondary,
       child: Center(
         child: Text(
-          label,
-          style: const TextStyle(color: Colors.white, fontSize: 20),
+          quickServicesList[index],
+          style: textTheme.labelLarge,
           overflow: TextOverflow.clip,
           softWrap: false,
         ),

@@ -33,5 +33,20 @@ TextTheme defaultTextTheme(context) {
       fontWeight: FontWeight.bold,
       color: darkDefault(context).onSurface,
     ),
+    labelLarge: TextStyle(
+      fontSize: 36,
+      fontWeight: FontWeight.bold,
+      color: darkDefault(context).onSurface,
+    ),
+    labelMedium: TextStyle(
+      fontSize: 28,
+      fontWeight: FontWeight.bold,
+      color: darkDefault(context).onSurface,
+    ),
+    labelSmall: TextStyle(
+      fontSize: 20,
+      fontWeight: FontWeight.bold,
+      color: darkDefault(context).onSurface,
+    ),
   );
 }
