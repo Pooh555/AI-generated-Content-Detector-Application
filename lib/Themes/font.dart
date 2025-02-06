@@ -1,30 +1,37 @@
+import 'package:ai_generated_content_detector/Themes/themes.dart';
 import 'package:flutter/material.dart';
 
 TextTheme defaultTextTheme(context) {
   return TextTheme(
-    headlineLarge: const TextStyle(
+    headlineLarge: TextStyle(
       fontSize: 36,
       fontWeight: FontWeight.bold,
+      color: darkDefault(context).surfaceBright,
     ),
-    headlineMedium: const TextStyle(
+    headlineMedium: TextStyle(
       fontSize: 28,
       fontWeight: FontWeight.bold,
+      color: darkDefault(context).surfaceBright,
     ),
-    headlineSmall: const TextStyle(
+    headlineSmall: TextStyle(
       fontSize: 20,
       fontWeight: FontWeight.bold,
+      color: darkDefault(context).surfaceBright,
     ),
-    bodyLarge: const TextStyle(
+    bodyLarge: TextStyle(
       fontSize: 36,
       fontWeight: FontWeight.normal,
+      color: darkDefault(context).onSurface,
     ),
-    bodyMedium: const TextStyle(
+    bodyMedium: TextStyle(
       fontSize: 28,
       fontWeight: FontWeight.bold,
+      color: darkDefault(context).onSurface,
     ),
-    bodySmall: const TextStyle(
+    bodySmall: TextStyle(
       fontSize: 20,
       fontWeight: FontWeight.bold,
+      color: darkDefault(context).onSurface,
     ),
   );
 }

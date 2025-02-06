@@ -1,6 +1,7 @@
-import 'package:ai_generated_content_detector/home/text.dart';
 import 'package:flutter/material.dart';
 import 'package:ai_generated_content_detector/home/carousel.dart';
+import 'package:ai_generated_content_detector/home/text.dart';
+import 'package:ai_generated_content_detector/Themes/varaibles.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key, required this.title});
@@ -21,7 +22,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         body: Padding(
-          padding: EdgeInsets.all(12.0),
+          padding: EdgeInsets.all(screenBorderMargin),
           child: Column(
             children: [
               const Padding(padding: EdgeInsets.only(top: 50)),

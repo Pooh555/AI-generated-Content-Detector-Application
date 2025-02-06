@@ -1,3 +1,4 @@
+import 'package:ai_generated_content_detector/Themes/themes.dart';
 import 'package:flutter/material.dart';
 
 class WelcomeText extends StatelessWidget {
@@ -10,7 +11,6 @@ class WelcomeText extends StatelessWidget {
 
     return RichText(
       text: TextSpan(
-        style: textTheme.headlineLarge,
         children: <TextSpan>[
           TextSpan(
             text: 'Hello',
@@ -34,20 +34,25 @@ class ServicesText extends StatelessWidget {
     // Accessing the custom TextTheme from the app's theme
     TextTheme textTheme = Theme.of(context).textTheme;
 
-    return RichText(
-      text: TextSpan(
-        style: textTheme.headlineLarge,
-        children: <TextSpan>[
-          TextSpan(
-            text: 'Hello',
-            style: textTheme.bodyLarge,
+    return Row(
+      children: [
+        Icon(
+          Icons.horizontal_split,
+          color: darkDefault(context).onSurface,
+          size: 24.0,
+          semanticLabel: 'Text to announce in accessibility modes',
+        ),
+        RichText(
+          text: TextSpan(
+            children: <TextSpan>[
+              TextSpan(
+                text: 'Services',
+                style: textTheme.bodySmall,
+              ),
+            ],
           ),
-          TextSpan(
-            text: ' Pooh555!',
-            style: textTheme.headlineLarge,
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
