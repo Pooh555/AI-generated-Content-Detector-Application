@@ -12,8 +12,7 @@ This project is an extension of a
 
 ### Deep Learning
 The models used for identifying AI-generated content are listed below.
-- Image model: <a href="https://github.com/Pooh555/AI-vs-human-generated-image" target="_blank">
-</a>
+- Image model: <a href="https://github.com/Pooh555/AI-vs-human-generated-image" target="_blank">Github repository</a>
 
 ### Project Structure
 This diagram is only 3 layers deep from the root directory.
