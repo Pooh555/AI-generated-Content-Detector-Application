@@ -1,10 +1,13 @@
 # AI-generated Content Detector
 
-A new Flutter project.
+<h3 align="center" style="display: flex; justify-content: space-between; width: 100%; text-align: center;">AI vs Human</h3>
+<p align="center">
+  <img src="https://github.com/Pooh555/AI-vs-human-generated-image/blob/main/res/assets/images/kita_AI.jpg" style="width: 45%; display: inline-block;" />
+  <img src="https://github.com/Pooh555/AI-vs-human-generated-image/blob/main/res/assets/images/kita_human.jpg" style="width: 45%; display: inline-block;" />
 
 ### About This Project
 This project is an extension of a 
-<a href="https://github.com/Pooh555/AI-vs-human-generated-image" target="_blank">kaggle competition project
+<a href="https://www.kaggle.com/competitions/detect-ai-vs-human-generated-images" target="_blank">kaggle competition project
 </a>.
 
 ### Deep Learning
@@ -77,7 +80,6 @@ This diagram is only 3 layers deep from the root directory.
     └── runner
         └── resources
 ```
-| Sklearn | 1.6.1 | conda-forge |
 ### Resources
 #### Pooh555's laptop
 | Devices | Specification | Remark |
