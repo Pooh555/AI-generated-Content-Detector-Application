@@ -1,4 +1,4 @@
-List<String> home_carousel_images_path = [
+List<String> homeCarouselImagesPaths = [
   "assets/images/home_carousel/carousel_image.1.jpg",
   "assets/images/home_carousel/carousel_image.2.jpg",
   "assets/images/home_carousel/carousel_image.3.jpg",

@@ -20,13 +20,19 @@ class _HomePageState extends State<HomePage> {
             backgroundColor: Theme.of(context).colorScheme.inversePrimary,
           ),
         ),
-        body: Center(
+        body: Padding(
+          padding: EdgeInsets.all(12.0),
           child: Column(
             children: [
               const Padding(padding: EdgeInsets.only(top: 50)),
               const WelcomeText(),
               const Padding(padding: EdgeInsets.only(top: 50)),
               const CarouselPanel(),
+              const Padding(padding: EdgeInsets.only(top: 25)),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: const ServicesText(),
+              ),
             ],
           ),
         ));

@@ -36,7 +36,7 @@ class _CarouselPanelState extends State<CarouselPanel> {
         enlargeFactor: 0.25,
         scrollDirection: Axis.horizontal,
       ),
-      items: home_carousel_images_path.map((imagePath) {
+      items: homeCarouselImagesPaths.map((imagePath) {
         return Builder(
           builder: (BuildContext context) {
             return Container(
