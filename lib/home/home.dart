@@ -22,32 +22,34 @@ class _HomePageState extends State<HomePage> {
             backgroundColor: Theme.of(context).colorScheme.inversePrimary,
           ),
         ),
-        body: Padding(
-          padding: EdgeInsets.all(screenBorderMargin),
-          child: Column(
-            children: [
-              const Padding(padding: EdgeInsets.only(top: 50)),
-              const WelcomeText(),
-              const Padding(padding: EdgeInsets.only(top: 50)),
-              const CarouselPanel(),
-              const Padding(padding: EdgeInsets.only(top: 25)),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: const QuickMenuText(),
-              ),
-              const Padding(padding: EdgeInsets.only(top: 15)),
-              ServiceWidgets(),
-              const Padding(padding: EdgeInsets.only(top: 15)),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: const ServicesText(),
-              ),
-              const Padding(padding: EdgeInsets.only(top: 15)),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: const UtilitiesText(),
-              ),
-            ],
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.all(screenBorderMargin),
+            child: Column(
+              children: [
+                const Padding(padding: EdgeInsets.only(top: 50)),
+                const WelcomeText(),
+                const Padding(padding: EdgeInsets.only(top: 50)),
+                const CarouselPanel(),
+                const Padding(padding: EdgeInsets.only(top: 25)),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: const QuickMenuText(),
+                ),
+                const Padding(padding: EdgeInsets.only(top: 15)),
+                ServiceWidgets(),
+                const Padding(padding: EdgeInsets.only(top: 15)),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: const ServicesText(),
+                ),
+                const Padding(padding: EdgeInsets.only(top: 15)),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: const UtilitiesText(),
+                ),
+              ],
+            ),
           ),
         ));
   }
