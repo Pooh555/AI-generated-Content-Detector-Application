@@ -1,9 +1,29 @@
-List<String> homeCarouselImagesPaths = [
-  "assets/images/home_carousel/carousel_image.1.jpg",
-  "assets/images/home_carousel/carousel_image.2.jpg",
-  "assets/images/home_carousel/carousel_image.3.jpg",
-  "assets/images/home_carousel/carousel_image.4.jpg",
-  "assets/images/home_carousel/carousel_image.5.jpg",
+List<Map<String, String>> homeCarouselImagesPaths = [
+  {
+    "path": "assets/images/home_carousel/carousel_image.1.jpg",
+    "label": "Linus Torvalds",
+    "description": "Talk is cheap, show me the code.",
+  },
+  {
+    "path": "assets/images/home_carousel/carousel_image.2.jpg",
+    "label": "Jensen Huang",
+    "description": "The person who uses AI will take your job.",
+  },
+  {
+    "path": "assets/images/home_carousel/carousel_image.3.jpg",
+    "label": "Richard Stallman",
+    "description": "Free software is a matter of liberty.",
+  },
+  {
+    "path": "assets/images/home_carousel/carousel_image.4.jpg",
+    "label": "Terry A. Davis",
+    "description": "What's reality? I don't know.",
+  },
+  {
+    "path": "assets/images/home_carousel/carousel_image.5.jpg",
+    "label": "Markus Persson",
+    "description": "Billionaire.",
+  },
 ];
 
 List<String> quickMenuImagesPath = [
