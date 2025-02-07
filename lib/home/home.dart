@@ -2,7 +2,7 @@ import 'package:ai_generated_content_detector/home/service_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:ai_generated_content_detector/home/carousel.dart';
 import 'package:ai_generated_content_detector/home/text.dart';
-import 'package:ai_generated_content_detector/Themes/varaibles.dart';
+import 'package:ai_generated_content_detector/themes/varaibles.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key, required this.title});
@@ -22,40 +22,34 @@ class _HomePageState extends State<HomePage> {
             backgroundColor: Theme.of(context).colorScheme.inversePrimary,
           ),
         ),
-        body: Padding(
-          padding: EdgeInsets.all(screenBorderMargin),
-          child: Column(
-            children: [
-              const Padding(padding: EdgeInsets.only(top: 50)),
-              const WelcomeText(),
-              const Padding(padding: EdgeInsets.only(top: 50)),
-              const CarouselPanel(),
-              const Padding(padding: EdgeInsets.only(top: 25)),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: const QuickMenuText(),
-              ),
-              ConstrainedBox(
-                constraints: const BoxConstraints(maxHeight: 200),
-                child: CarouselView(
-                  itemExtent: 330,
-                  shrinkExtent: 200,
-                  children:
-                      List<Widget>.generate(quickMenuList.length, (int index) {
-                    return UncontainedLayoutCard(
-                        index: index, label: quickMenuList[index]);
-                  }),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.all(screenBorderMargin),
+            child: Column(
+              children: [
+                const Padding(padding: EdgeInsets.only(top: 50)),
+                const WelcomeText(),
+                const Padding(padding: EdgeInsets.only(top: 50)),
+                const CarouselPanel(),
+                const Padding(padding: EdgeInsets.only(top: 25)),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: const QuickMenuText(),
                 ),
-              ),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: const ServicesText(),
-              ),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: const UtilitiesText(),
-              ),
-            ],
+                const Padding(padding: EdgeInsets.only(top: 15)),
+                ServiceWidgets(),
+                const Padding(padding: EdgeInsets.only(top: 15)),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: const ServicesText(),
+                ),
+                const Padding(padding: EdgeInsets.only(top: 15)),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: const UtilitiesText(),
+                ),
+              ],
+            ),
           ),
         ));
   }

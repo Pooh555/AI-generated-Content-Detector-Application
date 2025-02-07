@@ -1,4 +1,4 @@
-import 'package:ai_generated_content_detector/Themes/themes.dart';
+import 'package:ai_generated_content_detector/themes/themes.dart';
 import 'package:flutter/material.dart';
 
 TextTheme defaultTextTheme(context) {
