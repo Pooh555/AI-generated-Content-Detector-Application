@@ -13,7 +13,6 @@ class _DetectTextState extends State<DetectText> {
   @override
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: MyAppbar(title: "Analyze Your Image"), body: Container());
+    return Scaffold(appBar: MyAppbar(title: "Analyze Text"), body: Container());
   }
 }

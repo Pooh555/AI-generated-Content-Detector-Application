@@ -13,6 +13,6 @@ class _DetectImageState extends State<DetectImage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: MyAppbar(title: "Analyze Your Image"), body: Container());
+        appBar: MyAppbar(title: "Analyze Image"), body: Container());
   }
 }

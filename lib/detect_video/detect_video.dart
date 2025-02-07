@@ -13,6 +13,6 @@ class _DetectVideoState extends State<DetectVideo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: MyAppbar(title: "Analyze Your Image"), body: Container());
+        appBar: MyAppbar(title: "Analyze Video"), body: Container());
   }
 }
