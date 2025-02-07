@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ai_generated_content_detector/themes/themes.dart';
 
 class WelcomeText extends StatelessWidget {
   const WelcomeText({super.key});
@@ -32,13 +31,14 @@ class QuickMenuText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Accessing the custom TextTheme from the app's theme
+    ColorScheme colorScheme = Theme.of(context).colorScheme;
     TextTheme textTheme = Theme.of(context).textTheme;
 
     return Row(
       children: [
         Icon(
           Icons.dashboard_customize,
-          color: darkDefault(context).onSurface,
+          color: colorScheme.onSurface,
           size: textTheme.bodyMedium?.fontSize,
         ),
         RichText(
@@ -62,13 +62,14 @@ class ServicesText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Accessing the custom TextTheme from the app's theme
+    ColorScheme colorScheme = Theme.of(context).colorScheme;
     TextTheme textTheme = Theme.of(context).textTheme;
 
     return Row(
       children: [
         Icon(
           Icons.dashboard,
-          color: darkDefault(context).onSurface,
+          color: colorScheme.onSurface,
           size: textTheme.bodyMedium?.fontSize,
         ),
         RichText(
@@ -92,13 +93,14 @@ class UtilitiesText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Accessing the custom TextTheme from the app's theme
+    ColorScheme colorScheme = Theme.of(context).colorScheme;
     TextTheme textTheme = Theme.of(context).textTheme;
 
     return Row(
       children: [
         Icon(
           Icons.menu,
-          color: darkDefault(context).onSurface,
+          color: colorScheme.onSurface,
           size: textTheme.bodyMedium?.fontSize,
         ),
         RichText(

@@ -7,7 +7,7 @@ List<Map<String, String>> homeCarouselImagesPaths = [
   {
     "path": "assets/images/home_carousel/carousel_image.2.jpg",
     "label": "Jensen Huang",
-    "description": "The person who uses AI will take your job.",
+    "description": "Smart people focus on the right things.",
   },
   {
     "path": "assets/images/home_carousel/carousel_image.3.jpg",
@@ -26,6 +26,39 @@ List<Map<String, String>> homeCarouselImagesPaths = [
   },
 ];
 
+List<Map<String, String>> detectImageCarouselImagesPaths = [
+  {
+    "path": "assets/images/detect_image_carousel/carousel_image.1.jpg",
+    "label": "American Robin",
+    "description": "AI-generated",
+  },
+  {
+    "path": "assets/images/detect_image_carousel/carousel_image.2.jpg",
+    "label": "American Robin",
+    "description": "Human-generated",
+  },
+  {
+    "path": "assets/images/detect_image_carousel/carousel_image.3.jpg",
+    "label": "Elon Musk",
+    "description": "AI-generated",
+  },
+  {
+    "path": "assets/images/detect_image_carousel/carousel_image.4.jpg",
+    "label": "Elon Musk",
+    "description": "Human-generated",
+  },
+  {
+    "path": "assets/images/detect_image_carousel/carousel_image.5.jpg",
+    "label": "Beef Steak",
+    "description": "AI-generated",
+  },
+  {
+    "path": "assets/images/detect_image_carousel/carousel_image.6.jpg",
+    "label": "Beef Steak",
+    "description": "Human-generated",
+  },
+];
+
 List<String> quickMenuImagesPath = [
   "assets/images/quick_menu/image.jpg",
   "assets/images/quick_menu/text.jpg",
@@ -37,5 +70,5 @@ List<String> pages = [
   "/image",
   "/text",
   "/video",
-  "/voice",
+  "/audio",
 ];

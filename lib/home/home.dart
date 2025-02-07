@@ -1,4 +1,5 @@
 import 'package:ai_generated_content_detector/home/service_widgets.dart';
+import 'package:ai_generated_content_detector/themes/path.dart';
 import 'package:flutter/material.dart';
 import 'package:ai_generated_content_detector/home/carousel.dart';
 import 'package:ai_generated_content_detector/home/text.dart';
@@ -27,23 +28,23 @@ class _HomePageState extends State<HomePage> {
             padding: EdgeInsets.all(screenBorderMargin),
             child: Column(
               children: [
-                const Padding(padding: EdgeInsets.only(top: 50)),
+                const SizedBox(height: 50),
                 const WelcomeText(),
-                const Padding(padding: EdgeInsets.only(top: 50)),
-                const CarouselPanel(),
-                const Padding(padding: EdgeInsets.only(top: 25)),
+                const SizedBox(height: 50),
+                CarouselPanel(carouselImages: homeCarouselImagesPaths),
+                const SizedBox(height: 15),
                 Align(
                   alignment: Alignment.centerLeft,
                   child: const QuickMenuText(),
                 ),
-                const Padding(padding: EdgeInsets.only(top: 15)),
+                const SizedBox(height: 15),
                 ServiceWidgets(),
-                const Padding(padding: EdgeInsets.only(top: 15)),
+                const SizedBox(height: 15),
                 Align(
                   alignment: Alignment.centerLeft,
                   child: const ServicesText(),
                 ),
-                const Padding(padding: EdgeInsets.only(top: 15)),
+                const SizedBox(height: 15),
                 Align(
                   alignment: Alignment.centerLeft,
                   child: const UtilitiesText(),

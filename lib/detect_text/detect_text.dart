@@ -1,7 +1,5 @@
-import 'package:ai_generated_content_detector/home/service_widgets.dart';
+import 'package:ai_generated_content_detector/themes/template.dart';
 import 'package:flutter/material.dart';
-import 'package:ai_generated_content_detector/home/text.dart';
-import 'package:ai_generated_content_detector/themes/varaibles.dart';
 
 class DetectText extends StatefulWidget {
   const DetectText({super.key, required this.title});
@@ -13,35 +11,8 @@ class DetectText extends StatefulWidget {
 
 class _DetectTextState extends State<DetectText> {
   @override
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(0.0),
-          child: AppBar(
-            backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          ),
-        ),
-        body: Padding(
-          padding: EdgeInsets.all(screenBorderMargin),
-          child: Column(
-            children: [
-              const Padding(padding: EdgeInsets.only(top: 50)),
-              const WelcomeText(),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: const QuickMenuText(),
-              ),
-              ServiceWidgets(),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: const ServicesText(),
-              ),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: const UtilitiesText(),
-              ),
-            ],
-          ),
-        ));
+    return Scaffold(appBar: MyAppbar(title: "Analyze Text"), body: Container());
   }
 }
