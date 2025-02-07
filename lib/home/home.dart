@@ -35,11 +35,14 @@ class _HomePageState extends State<HomePage> {
                 alignment: Alignment.centerLeft,
                 child: const QuickMenuText(),
               ),
+              const Padding(padding: EdgeInsets.only(top: 15)),
               ServiceWidgets(),
+              const Padding(padding: EdgeInsets.only(top: 15)),
               Align(
                 alignment: Alignment.centerLeft,
                 child: const ServicesText(),
               ),
+              const Padding(padding: EdgeInsets.only(top: 15)),
               Align(
                 alignment: Alignment.centerLeft,
                 child: const UtilitiesText(),

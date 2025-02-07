@@ -15,19 +15,14 @@ class ServiceWidgets extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      // Enable horizontal scrolling
-      scrollDirection: Axis.horizontal, // Specify horizontal direction
+      scrollDirection: Axis.horizontal,
       child: Row(
-        // Arrange widgets in a row
         children: List<Widget>.generate(quickMenuList.length, (int index) {
           return Padding(
-            // Add padding for spacing between cards
-            padding: EdgeInsets.only(
-                right:
-                    inbetweenWidgetpadding), // Adjust right padding as needed
+            padding: EdgeInsets.only(right: inbetweenWidgetpadding),
             child: SizedBox(
-              width: 259, // Keep your desired width
-              height: 175, // Keep your desired height
+              width: 259,
+              height: 175,
               child: UncontainedLayoutCard(
                   index: index, label: quickMenuList[index]),
             ),
