@@ -31,7 +31,7 @@ class _HomePageState extends State<HomePage> {
                 const WelcomeText(),
                 const Padding(padding: EdgeInsets.only(top: 50)),
                 const CarouselPanel(),
-                const Padding(padding: EdgeInsets.only(top: 25)),
+                const Padding(padding: EdgeInsets.only(top: 15)),
                 Align(
                   alignment: Alignment.centerLeft,
                   child: const QuickMenuText(),
