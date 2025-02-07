@@ -62,16 +62,21 @@ class ServicesGridWidget extends StatelessWidget {
         mainAxisSpacing: 10,
         crossAxisCount: 4,
         children: servicesIconPath.entries.map((entry) {
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              entry.value, // Icon widget
-              const SizedBox(height: 5),
-              Text(
-                entry.key,
-                style: textTheme.labelSmall,
-              ),
-            ],
+          return GestureDetector(
+            onTap: () {
+              Navigator.of(context).pushNamed('/${entry.key.toLowerCase()}');
+            },
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                entry.value, // Icon widget
+                const SizedBox(height: 5),
+                Text(
+                  entry.key,
+                  style: textTheme.labelSmall,
+                ),
+              ],
+            ),
           );
         }).toList(),
       ),
