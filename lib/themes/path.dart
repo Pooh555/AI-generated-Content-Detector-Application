@@ -7,7 +7,7 @@ List<Map<String, String>> homeCarouselImagesPaths = [
   {
     "path": "assets/images/home_carousel/carousel_image.2.jpg",
     "label": "Jensen Huang",
-    "description": "The person who uses AI will take your job.",
+    "description": "Smart people focus on the right things.",
   },
   {
     "path": "assets/images/home_carousel/carousel_image.3.jpg",
