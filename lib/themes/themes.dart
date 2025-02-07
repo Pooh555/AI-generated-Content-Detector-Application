@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 ColorScheme darkDefault(context) {
   return const ColorScheme(
     brightness: Brightness.dark,
-    primary: Color.fromRGBO(32, 32, 32, 1),
+    primary: Color.fromRGBO(17, 17, 17, 1),
     error: Color.fromARGB(255, 255, 147, 147),
     errorContainer: Color.fromARGB(255, 255, 216, 86),
-    inversePrimary: Color.fromARGB(255, 12, 12, 12),
+    inversePrimary: Color.fromARGB(255, 219, 54, 54),
     inverseSurface: Color.fromARGB(255, 210, 235, 255),
     onError: Color.fromARGB(255, 255, 147, 147),
     onErrorContainer: Color.fromARGB(255, 255, 124, 124),
