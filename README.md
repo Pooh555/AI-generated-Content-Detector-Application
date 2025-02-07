@@ -2,8 +2,8 @@
 
 <h3 align="center" style="display: flex; justify-content: space-between; width: 100%; text-align: center;">AI vs Human</h3>
 <p align="center">
-  <img src="https://github.com/Pooh555/AI-vs-human-generated-image/blob/main/res/assets/github/kita_AI.jpg" style="width: 45%; display: inline-block;" />
-  <img src="https://github.com/Pooh555/AI-vs-human-generated-image/blob/main/res/assets/github/kita_human.jpg" style="width: 45%; display: inline-block;" />
+  <img src="res/assets/github/kita_AI.jpg" style="width: 45%; display: inline-block;" />
+  <img src="res/assets/github/kita_human.jpg" style="width: 45%; display: inline-block;" />
 
 ### About This Project
 This project is an extension of a 
