@@ -28,23 +28,23 @@ class _HomePageState extends State<HomePage> {
             padding: EdgeInsets.all(screenBorderMargin),
             child: Column(
               children: [
-                const Padding(padding: EdgeInsets.only(top: 50)),
+                const SizedBox(height: 50),
                 const WelcomeText(),
-                const Padding(padding: EdgeInsets.only(top: 50)),
+                const SizedBox(height: 50),
                 CarouselPanel(carouselImages: homeCarouselImagesPaths),
                 const Padding(padding: EdgeInsets.only(top: 15)),
                 Align(
                   alignment: Alignment.centerLeft,
                   child: const QuickMenuText(),
                 ),
-                const Padding(padding: EdgeInsets.only(top: 15)),
+                const SizedBox(height: 15),
                 ServiceWidgets(),
-                const Padding(padding: EdgeInsets.only(top: 15)),
+                const SizedBox(height: 15),
                 Align(
                   alignment: Alignment.centerLeft,
                   child: const ServicesText(),
                 ),
-                const Padding(padding: EdgeInsets.only(top: 15)),
+                const SizedBox(height: 15),
                 Align(
                   alignment: Alignment.centerLeft,
                   child: const UtilitiesText(),

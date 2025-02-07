@@ -43,3 +43,24 @@ class UploadImageText extends StatelessWidget {
     );
   }
 }
+
+class NoSelectedImageText extends StatelessWidget {
+  const NoSelectedImageText({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    // Accessing the custom TextTheme from the app's theme
+    TextTheme textTheme = Theme.of(context).textTheme;
+
+    return RichText(
+      text: TextSpan(
+        children: <TextSpan>[
+          TextSpan(
+            text: "No image selected",
+            style: textTheme.bodyMedium,
+          ),
+        ],
+      ),
+    );
+  }
+}

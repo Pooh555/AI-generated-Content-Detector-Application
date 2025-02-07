@@ -85,10 +85,6 @@ class _DetectImageState extends State<DetectImage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              _image == null
-                  ? const Text('No image selected.')
-                  : Image.file(_image!),
-              const SizedBox(height: 20),
               CarouselPanel(
                 carouselImages: detectImageCarouselImagesPaths,
               ),
@@ -102,6 +98,8 @@ class _DetectImageState extends State<DetectImage> {
                     onPressed: () => _pickImage(ImageSource.camera),
                     child: UploadImageText(title: "Take a photo"),
                   ),
+                  const SizedBox(height: 20),
+                  _image == null ? NoSelectedImageText() : Image.file(_image!),
                 ],
               ),
               const SizedBox(height: 20),
