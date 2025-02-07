@@ -27,10 +27,10 @@ class MyApp extends StatelessWidget {
       home: const HomePage(title: "Home"),
       initialRoute: '/',
       routes: {
+        '/audio': (context) => DetectAudio(title: "Detect AI-generated Voice"),
         '/image': (context) => DetectImage(title: "Detect AI-generated Image"),
         '/text': (context) => DetectText(title: "Detect AI-generated Text"),
         '/video': (context) => DetectVideo(title: "Detect AI-generated Video"),
-        '/audio': (context) => DetectAudio(title: "Detect AI-generated Voice"),
       },
     );
   }

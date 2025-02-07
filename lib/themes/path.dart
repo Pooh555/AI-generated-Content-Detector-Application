@@ -68,9 +68,20 @@ List<String> quickMenuImagesPath = [
   "assets/images/quick_menu/voice.jpg",
 ];
 
-List<String> pages = [
+List<String> quickMenuPages = [
   "/image",
   "/text",
   "/video",
   "/audio",
+];
+
+List<String> pages = [
+  "/audio",
+  "/about",
+  "/help",
+  "/image",
+  "/profile",
+  "/settings",
+  "/text",
+  "/video",
 ];
