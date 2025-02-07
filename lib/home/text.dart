@@ -7,17 +7,20 @@ class WelcomeText extends StatelessWidget {
   Widget build(BuildContext context) {
     // Accessing the custom TextTheme from the app's theme
     TextTheme textTheme = Theme.of(context).textTheme;
+    ColorScheme colorScheme = Theme.of(context).colorScheme;
 
     return RichText(
+      textAlign: TextAlign.center,
       text: TextSpan(
         children: <TextSpan>[
           TextSpan(
-            text: 'Hello',
-            style: textTheme.bodyLarge,
+            text: 'Beyond the illusion\n',
+            style: textTheme.headlineLarge,
           ),
           TextSpan(
-            text: ' Pooh555!',
-            style: textTheme.headlineLarge,
+            text: 'AI or Human',
+            style: textTheme.bodyLarge?.copyWith(
+                fontStyle: FontStyle.italic, color: colorScheme.onSecondary),
           ),
         ],
       ),
@@ -46,7 +49,7 @@ class QuickMenuText extends StatelessWidget {
             children: <TextSpan>[
               TextSpan(
                 text: " Quick Menu",
-                style: textTheme.bodySmall,
+                style: textTheme.bodyMedium,
               ),
             ],
           ),
@@ -77,7 +80,7 @@ class ServicesText extends StatelessWidget {
             children: <TextSpan>[
               TextSpan(
                 text: " Services",
-                style: textTheme.bodySmall,
+                style: textTheme.bodyMedium,
               ),
             ],
           ),
@@ -108,7 +111,7 @@ class UtilitiesText extends StatelessWidget {
             children: <TextSpan>[
               TextSpan(
                 text: " Others",
-                style: textTheme.bodySmall,
+                style: textTheme.bodyMedium,
               ),
             ],
           ),

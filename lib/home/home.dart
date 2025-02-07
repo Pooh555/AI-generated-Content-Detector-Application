@@ -1,4 +1,5 @@
 import 'package:ai_generated_content_detector/home/service_widgets.dart';
+import 'package:ai_generated_content_detector/home/services_grid.dart';
 import 'package:ai_generated_content_detector/themes/path.dart';
 import 'package:flutter/material.dart';
 import 'package:ai_generated_content_detector/home/carousel.dart';
@@ -44,6 +45,7 @@ class _HomePageState extends State<HomePage> {
                   alignment: Alignment.centerLeft,
                   child: const ServicesText(),
                 ),
+                const ServicesGridWidget(),
                 const SizedBox(height: 15),
                 Align(
                   alignment: Alignment.centerLeft,

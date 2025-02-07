@@ -88,6 +88,8 @@ class _DetectImageState extends State<DetectImage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              IntroductionText(),
+              SizedBox(height: 15),
               CarouselPanel(
                 carouselImages: detectImageCarouselImagesPaths,
               ),
