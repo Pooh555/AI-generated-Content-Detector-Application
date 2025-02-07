@@ -49,7 +49,9 @@ class NoSelectedImageText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Accessing the custom TextTheme from the app's theme
     TextTheme textTheme = Theme.of(context).textTheme;
+    ColorScheme colorScheme = Theme.of(context).colorScheme;
 
     return RichText(
       text: TextSpan(
@@ -57,8 +59,7 @@ class NoSelectedImageText extends StatelessWidget {
           TextSpan(
             text: "No image selected",
             style: textTheme.bodySmall?.copyWith(
-              fontStyle: FontStyle.italic,
-            ),
+                fontStyle: FontStyle.italic, color: colorScheme.onSecondary),
           ),
         ],
       ),

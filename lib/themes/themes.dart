@@ -65,6 +65,9 @@ ElevatedButtonThemeData defaultElevatedButtonTheme(context) {
       foregroundColor: darkDefault(context).tertiaryFixed,
       backgroundColor: darkDefault(context).tertiary,
       padding: const EdgeInsets.only(top: 10, bottom: 10, left: 50, right: 50),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(11.75), // Rounded corners
+      ),
       elevation: 4,
     ),
   );
