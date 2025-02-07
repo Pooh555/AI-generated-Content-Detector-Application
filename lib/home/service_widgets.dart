@@ -6,7 +6,7 @@ List<String> quickMenuList = [
   "Image",
   "Text",
   "Video",
-  "Voice",
+  "Audio",
 ];
 
 class ServiceWidgets extends StatelessWidget {

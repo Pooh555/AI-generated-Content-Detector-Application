@@ -1,3 +1,4 @@
+import 'package:ai_generated_content_detector/themes/template.dart';
 import 'package:flutter/material.dart';
 
 class DetectImage extends StatefulWidget {
@@ -12,18 +13,6 @@ class _DetectImageState extends State<DetectImage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(75.0),
-          child: AppBar(
-            backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-            leading: IconButton(
-              icon: const Icon(Icons.arrow_back_ios_new),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            ),
-          ),
-        ),
-        body: Container());
+        appBar: MyAppbar(title: "Analyze Your Image"), body: Container());
   }
 }

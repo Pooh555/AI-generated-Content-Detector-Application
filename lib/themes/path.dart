@@ -37,5 +37,5 @@ List<String> pages = [
   "/image",
   "/text",
   "/video",
-  "/voice",
+  "/audio",
 ];

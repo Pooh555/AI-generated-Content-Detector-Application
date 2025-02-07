@@ -12,12 +12,8 @@ class AppbarText extends StatelessWidget {
       text: TextSpan(
         children: <TextSpan>[
           TextSpan(
-            text: 'Hello',
-            style: textTheme.bodyLarge,
-          ),
-          TextSpan(
-            text: ' Pooh555!',
-            style: textTheme.headlineLarge,
+            text: 'Analyze your Image',
+            style: textTheme.bodyMedium,
           ),
         ],
       ),
