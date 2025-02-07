@@ -98,11 +98,11 @@ class _DetectImageState extends State<DetectImage> {
                   ElevatedButton(
                       onPressed: () => _pickImage(ImageSource.gallery),
                       style: elevatedButtonThemeData.style,
-                      child: UploadImageText(title: "Upload your image")),
+                      child: UploadImageText(title: "Upload an Image")),
                   SizedBox(height: 15),
                   ElevatedButton(
                     onPressed: () => _pickImage(ImageSource.camera),
-                    child: UploadImageText(title: "Take a photo"),
+                    child: UploadImageText(title: "Take a Photo"),
                   ),
                 ],
               ),
@@ -110,14 +110,12 @@ class _DetectImageState extends State<DetectImage> {
               _image == null ? NoSelectedImageText() : Image.file(_image!),
               const SizedBox(height: 20),
               ElevatedButton(
-                onPressed: _image == null || _isPredicting
-                    ? null
-                    : _uploadImage, // Disable button when no image or predicting
-                child: _isPredicting
-                    ? const CircularProgressIndicator()
-                    : const Text(
-                        'Analyze Image'), // Show indicator while predicting
-              ),
+                  onPressed: _image == null || _isPredicting
+                      ? null
+                      : _uploadImage, // Disable button when no image or predicting
+                  child: _isPredicting
+                      ? const CircularProgressIndicator()
+                      : UploadImageText(title: "Analyze Image")),
               const SizedBox(height: 20),
               Text(_predictionResult, style: const TextStyle(fontSize: 18)),
             ],
