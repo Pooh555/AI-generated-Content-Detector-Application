@@ -66,6 +66,13 @@ List<String> quickMenuImagesPath = [
   "assets/images/quick_menu/voice.jpg",
 ];
 
+List<String> servicesIconPath = [
+  "assets/images/quick_menu/image.jpg",
+  "assets/images/quick_menu/text.jpg",
+  "assets/images/quick_menu/video.jpg",
+  "assets/images/quick_menu/voice.jpg",
+];
+
 List<String> pages = [
   "/image",
   "/text",
