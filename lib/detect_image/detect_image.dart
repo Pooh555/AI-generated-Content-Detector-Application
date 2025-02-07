@@ -78,6 +78,9 @@ class _DetectImageState extends State<DetectImage> {
 
   @override
   Widget build(BuildContext context) {
+    ElevatedButtonThemeData elevatedButtonThemeData =
+        Theme.of(context).elevatedButtonTheme;
+
     return Scaffold(
         appBar: MyAppbar(title: "Analyze Image"),
         body: SingleChildScrollView(
@@ -88,20 +91,23 @@ class _DetectImageState extends State<DetectImage> {
               CarouselPanel(
                 carouselImages: detectImageCarouselImagesPaths,
               ),
-              Row(
+              SizedBox(height: 15),
+              Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   ElevatedButton(
                       onPressed: () => _pickImage(ImageSource.gallery),
+                      style: elevatedButtonThemeData.style,
                       child: UploadImageText(title: "Upload your image")),
+                  SizedBox(height: 15),
                   ElevatedButton(
                     onPressed: () => _pickImage(ImageSource.camera),
                     child: UploadImageText(title: "Take a photo"),
                   ),
-                  const SizedBox(height: 20),
-                  _image == null ? NoSelectedImageText() : Image.file(_image!),
                 ],
               ),
+              const SizedBox(height: 20),
+              _image == null ? NoSelectedImageText() : Image.file(_image!),
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: _image == null || _isPredicting

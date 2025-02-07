@@ -34,7 +34,7 @@ List<Map<String, String>> detectImageCarouselImagesPaths = [
   },
   {
     "path": "assets/images/detect_image_carousel/carousel_image.2.jpg",
-    "label": "Jensen Huang",
+    "label": "American Robin",
     "description": "Human-generated",
   },
   {

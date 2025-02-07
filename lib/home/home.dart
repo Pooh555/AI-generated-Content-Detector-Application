@@ -32,7 +32,7 @@ class _HomePageState extends State<HomePage> {
                 const WelcomeText(),
                 const SizedBox(height: 50),
                 CarouselPanel(carouselImages: homeCarouselImagesPaths),
-                const Padding(padding: EdgeInsets.only(top: 15)),
+                const SizedBox(height: 15),
                 Align(
                   alignment: Alignment.centerLeft,
                   child: const QuickMenuText(),

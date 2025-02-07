@@ -23,6 +23,7 @@ class _CarouselPanelState extends State<CarouselPanel> {
   @override
   Widget build(BuildContext context) {
     TextTheme textTheme = Theme.of(context).textTheme;
+    ColorScheme colorScheme = Theme.of(context).colorScheme;
 
     List carouselImages = widget.carouselImages;
 
@@ -48,35 +49,40 @@ class _CarouselPanelState extends State<CarouselPanel> {
             return Container(
               width: MediaQuery.of(context).size.width,
               margin: const EdgeInsets.symmetric(horizontal: 0.0),
-              child: ClipRRect(
+              child: Material(
+                elevation: 4.0,
                 borderRadius: BorderRadius.circular(widgetBorderRadius),
-                child: Stack(
-                  fit: StackFit.expand,
-                  children: [
-                    Image.asset(imageMap["path"]!, fit: BoxFit.cover),
-                    Center(
-                      child: Column(
-                        children: [
-                          const Padding(
-                            padding: EdgeInsets.only(top: 225.0),
-                          ),
-                          Text(
-                            imageMap["label"]!,
-                            style: textTheme.displaySmall,
-                            textAlign: TextAlign.center,
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.only(top: 0.0),
-                          ),
-                          Text(
-                            imageMap["description"]!,
-                            style: textTheme.bodySmall,
-                            textAlign: TextAlign.center,
-                          ),
-                        ],
+                shadowColor: colorScheme.shadow,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(widgetBorderRadius),
+                  child: Stack(
+                    fit: StackFit.expand,
+                    children: [
+                      Image.asset(imageMap["path"]!, fit: BoxFit.cover),
+                      Center(
+                        child: Column(
+                          children: [
+                            const Padding(
+                              padding: EdgeInsets.only(top: 225.0),
+                            ),
+                            Text(
+                              imageMap["label"]!,
+                              style: textTheme.displaySmall,
+                              textAlign: TextAlign.center,
+                            ),
+                            const Padding(
+                              padding: EdgeInsets.only(top: 0.0),
+                            ),
+                            Text(
+                              imageMap["description"]!,
+                              style: textTheme.bodySmall,
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             );

@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
         colorScheme: darkDefault(context),
         textTheme: defaultTextTheme(context),
         useMaterial3: true,
+        elevatedButtonTheme: defaultElevatedButtonTheme(context),
       ),
       home: const HomePage(title: "Home"),
       initialRoute: '/',
