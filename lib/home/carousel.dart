@@ -1,11 +1,11 @@
-import 'package:ai_generated_content_detector/themes/themes.dart';
 import 'package:ai_generated_content_detector/themes/varaibles.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import '../themes/path.dart';
 
 class CarouselPanel extends StatefulWidget {
-  const CarouselPanel({super.key});
+  const CarouselPanel({super.key, required this.carouselImages});
+
+  final List carouselImages;
 
   @override
   State<CarouselPanel> createState() => _CarouselPanelState();
@@ -23,7 +23,8 @@ class _CarouselPanelState extends State<CarouselPanel> {
   @override
   Widget build(BuildContext context) {
     TextTheme textTheme = Theme.of(context).textTheme;
-    ColorScheme colorScheme = Theme.of(context).colorScheme;
+
+    List carouselImages = widget.carouselImages;
 
     return CarouselSlider(
       options: CarouselOptions(
@@ -34,14 +35,14 @@ class _CarouselPanelState extends State<CarouselPanel> {
         enableInfiniteScroll: true,
         reverse: false,
         autoPlay: true,
-        autoPlayInterval: Duration(seconds: 3),
-        autoPlayAnimationDuration: Duration(milliseconds: 1000),
+        autoPlayInterval: const Duration(seconds: 3),
+        autoPlayAnimationDuration: const Duration(milliseconds: 1000),
         autoPlayCurve: Curves.fastOutSlowIn,
         enlargeCenterPage: true,
         enlargeFactor: 0.25,
         scrollDirection: Axis.horizontal,
       ),
-      items: homeCarouselImagesPaths.map((imageMap) {
+      items: carouselImages.map((imageMap) {
         return Builder(
           builder: (BuildContext context) {
             return Container(
@@ -56,16 +57,16 @@ class _CarouselPanelState extends State<CarouselPanel> {
                     Center(
                       child: Column(
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.only(top: 225.0),
+                          const Padding(
+                            padding: EdgeInsets.only(top: 225.0),
                           ),
                           Text(
                             imageMap["label"]!,
                             style: textTheme.displaySmall,
                             textAlign: TextAlign.center,
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 0.0),
+                          const Padding(
+                            padding: EdgeInsets.only(top: 0.0),
                           ),
                           Text(
                             imageMap["description"]!,

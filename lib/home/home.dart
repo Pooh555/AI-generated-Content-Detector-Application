@@ -1,4 +1,5 @@
 import 'package:ai_generated_content_detector/home/service_widgets.dart';
+import 'package:ai_generated_content_detector/themes/path.dart';
 import 'package:flutter/material.dart';
 import 'package:ai_generated_content_detector/home/carousel.dart';
 import 'package:ai_generated_content_detector/home/text.dart';
@@ -30,7 +31,7 @@ class _HomePageState extends State<HomePage> {
                 const Padding(padding: EdgeInsets.only(top: 50)),
                 const WelcomeText(),
                 const Padding(padding: EdgeInsets.only(top: 50)),
-                const CarouselPanel(),
+                CarouselPanel(carouselImages: homeCarouselImagesPaths),
                 const Padding(padding: EdgeInsets.only(top: 15)),
                 Align(
                   alignment: Alignment.centerLeft,
