@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ai_generated_content_detector/home/text.dart';
-import 'package:ai_generated_content_detector/themes/varaibles.dart';
 
 class DetectImage extends StatefulWidget {
   const DetectImage({super.key, required this.title});
@@ -15,31 +13,17 @@ class _DetectImageState extends State<DetectImage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(0.0),
+          preferredSize: const Size.fromHeight(75.0),
           child: AppBar(
             backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+            leading: IconButton(
+              icon: const Icon(Icons.arrow_back_ios_new),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
           ),
         ),
-        body: Padding(
-          padding: EdgeInsets.all(screenBorderMargin),
-          child: Column(
-            children: [
-              const Padding(padding: EdgeInsets.only(top: 50)),
-              const WelcomeText(),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: const QuickMenuText(),
-              ),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: const ServicesText(),
-              ),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: const UtilitiesText(),
-              ),
-            ],
-          ),
-        ));
+        body: Container());
   }
 }
