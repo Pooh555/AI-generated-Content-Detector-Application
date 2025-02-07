@@ -49,7 +49,7 @@ class QuickMenuText extends StatelessWidget {
             children: <TextSpan>[
               TextSpan(
                 text: " Quick Menu",
-                style: textTheme.bodySmall,
+                style: textTheme.bodyMedium,
               ),
             ],
           ),
@@ -80,7 +80,7 @@ class ServicesText extends StatelessWidget {
             children: <TextSpan>[
               TextSpan(
                 text: " Services",
-                style: textTheme.bodySmall,
+                style: textTheme.bodyMedium,
               ),
             ],
           ),
@@ -111,7 +111,7 @@ class UtilitiesText extends StatelessWidget {
             children: <TextSpan>[
               TextSpan(
                 text: " Others",
-                style: textTheme.bodySmall,
+                style: textTheme.bodyMedium,
               ),
             ],
           ),
