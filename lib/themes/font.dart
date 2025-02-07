@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 TextTheme defaultTextTheme(context) {
   return TextTheme(
     headlineLarge: TextStyle(
-      fontSize: 36,
+      fontSize: 48,
       fontWeight: FontWeight.bold,
       color: darkDefault(context).surfaceBright,
     ),

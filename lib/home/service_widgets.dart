@@ -51,7 +51,7 @@ class UncontainedLayoutCard extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         if (index < pages.length) {
-          Navigator.of(context).pushNamed(pages[index]);
+          Navigator.of(context).pushNamed(quickMenuPages[index]);
         } else {
           throw "The desired page does not exist.";
         }

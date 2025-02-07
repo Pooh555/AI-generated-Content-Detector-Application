@@ -12,10 +12,40 @@ class AppbarText extends StatelessWidget {
       text: TextSpan(
         children: <TextSpan>[
           TextSpan(
-            text: 'Analyze your Image',
+            text: "Analyze your Image",
             style: textTheme.bodySmall,
           ),
         ],
+      ),
+    );
+  }
+}
+
+class IntroductionText extends StatelessWidget {
+  const IntroductionText({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    // Accessing the custom TextTheme from the app's theme
+    TextTheme textTheme = Theme.of(context).textTheme;
+    ColorScheme colorScheme = Theme.of(context).colorScheme;
+
+    return Align(
+      alignment: Alignment.topLeft,
+      child: RichText(
+        text: TextSpan(
+          children: <TextSpan>[
+            TextSpan(
+              text: "Genuine or Generated?\n",
+              style: textTheme.headlineMedium,
+            ),
+            TextSpan(
+              text: "Let's find out!",
+              style: textTheme.bodySmall?.copyWith(
+                  fontStyle: FontStyle.italic, color: colorScheme.onSecondary),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -49,7 +79,9 @@ class NoSelectedImageText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Accessing the custom TextTheme from the app's theme
     TextTheme textTheme = Theme.of(context).textTheme;
+    ColorScheme colorScheme = Theme.of(context).colorScheme;
 
     return RichText(
       text: TextSpan(
@@ -57,8 +89,7 @@ class NoSelectedImageText extends StatelessWidget {
           TextSpan(
             text: "No image selected",
             style: textTheme.bodySmall?.copyWith(
-              fontStyle: FontStyle.italic,
-            ),
+                fontStyle: FontStyle.italic, color: colorScheme.onSecondary),
           ),
         ],
       ),

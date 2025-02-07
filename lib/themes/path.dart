@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 List<Map<String, String>> homeCarouselImagesPaths = [
   {
     "path": "assets/images/home_carousel/carousel_image.1.jpg",
@@ -66,9 +68,20 @@ List<String> quickMenuImagesPath = [
   "assets/images/quick_menu/voice.jpg",
 ];
 
-List<String> pages = [
+List<String> quickMenuPages = [
   "/image",
   "/text",
   "/video",
   "/audio",
+];
+
+List<String> pages = [
+  "/audio",
+  "/about",
+  "/help",
+  "/image",
+  "/profile",
+  "/settings",
+  "/text",
+  "/video",
 ];
