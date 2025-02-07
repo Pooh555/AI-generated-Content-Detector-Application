@@ -1,7 +1,7 @@
-import 'package:ai_generated_content_detector/Themes/varaibles.dart';
+import 'package:ai_generated_content_detector/themes/varaibles.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import '../Themes/path.dart';
+import '../themes/path.dart';
 
 class CarouselPanel extends StatefulWidget {
   const CarouselPanel({super.key});

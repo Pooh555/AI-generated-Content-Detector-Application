@@ -1,18 +1,17 @@
 import 'package:ai_generated_content_detector/home/service_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:ai_generated_content_detector/home/carousel.dart';
 import 'package:ai_generated_content_detector/home/text.dart';
 import 'package:ai_generated_content_detector/themes/varaibles.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key, required this.title});
+class DetectVideo extends StatefulWidget {
+  const DetectVideo({super.key, required this.title});
   final String title;
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<DetectVideo> createState() => _DetectVideoState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _DetectVideoState extends State<DetectVideo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,9 +27,6 @@ class _HomePageState extends State<HomePage> {
             children: [
               const Padding(padding: EdgeInsets.only(top: 50)),
               const WelcomeText(),
-              const Padding(padding: EdgeInsets.only(top: 50)),
-              const CarouselPanel(),
-              const Padding(padding: EdgeInsets.only(top: 25)),
               Align(
                 alignment: Alignment.centerLeft,
                 child: const QuickMenuText(),

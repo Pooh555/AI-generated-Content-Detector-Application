@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ai_generated_content_detector/Themes/themes.dart';
+import 'package:ai_generated_content_detector/themes/themes.dart';
 
 class WelcomeText extends StatelessWidget {
   const WelcomeText({super.key});

@@ -12,3 +12,10 @@ List<String> quickMenuImagesPath = [
   "assets/images/quick_menu/video.jpg",
   "assets/images/quick_menu/voice.jpg",
 ];
+
+List<String> pages = [
+  "/image",
+  "/text",
+  "/video",
+  "/voice",
+];
