@@ -19,7 +19,7 @@ class IntroductionText extends StatelessWidget {
               style: textTheme.headlineMedium,
             ),
             TextSpan(
-              text: "Let's uncover the truthr!",
+              text: "Let's uncover the truth!",
               style: textTheme.bodySmall?.copyWith(
                   fontStyle: FontStyle.italic, color: colorScheme.onSecondary),
             ),

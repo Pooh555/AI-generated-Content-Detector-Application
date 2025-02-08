@@ -79,6 +79,11 @@ flutter:
     - assets/images/detect_image_carousel/carousel_image.4.jpg
     - assets/images/detect_image_carousel/carousel_image.5.jpg
     - assets/images/detect_image_carousel/carousel_image.6.jpg
+    - assets/images/detect_text_carousel/carousel_image.1.jpg
+    - assets/images/detect_text_carousel/carousel_image.2.jpg
+    - assets/images/detect_text_carousel/carousel_image.3.jpg
+    - assets/images/detect_text_carousel/carousel_image.4.jpg
+    - assets/images/detect_text_carousel/carousel_image.5.jpg
     - assets/images/quick_menu/image.jpg
     - assets/images/quick_menu/text.jpg
     - assets/images/quick_menu/video.jpg
