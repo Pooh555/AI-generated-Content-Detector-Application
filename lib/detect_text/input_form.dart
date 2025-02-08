@@ -50,42 +50,35 @@ class _InputTextFieldState extends State<InputTextField> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Padding(
-          padding: EdgeInsets.only(
-              top: screenBorderMargin,
-              bottom: screenBorderMargin,
-              left: screenBorderMargin,
-              right: screenBorderMargin),
-          child: TextField(
-            controller: _controller,
-            maxLength: maxTextLength,
-            maxLines: _currentLines,
-            minLines: 5,
-            expands: false,
-            style: textTheme.bodySmall,
-            decoration: InputDecoration(
-              fillColor: colorScheme.secondary,
-              filled: true,
-              border: OutlineInputBorder(),
-              focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(
-                  color: colorScheme.outlineVariant,
-                  width: 1.25,
-                ),
+        TextField(
+          controller: _controller,
+          maxLength: maxTextLength,
+          maxLines: _currentLines,
+          minLines: 5,
+          expands: false,
+          style: textTheme.bodySmall,
+          decoration: InputDecoration(
+            fillColor: colorScheme.secondary,
+            filled: true,
+            border: OutlineInputBorder(),
+            focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                color: colorScheme.outlineVariant,
+                width: 1.25,
               ),
-              enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(
-                  color: colorScheme.outline,
-                ),
-              ),
-              hintText: "Enter your text here...",
-              hintStyle: textTheme.bodySmall?.copyWith(
-                  fontStyle: FontStyle.italic, color: colorScheme.onSecondary),
-              alignLabelWithHint: true,
             ),
+            enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                color: colorScheme.outline,
+              ),
+            ),
+            hintText: "Enter your text here...",
+            hintStyle: textTheme.bodySmall?.copyWith(
+                fontStyle: FontStyle.italic, color: colorScheme.onSecondary),
+            alignLabelWithHint: true,
           ),
         ),
-        SizedBox(height: 15),
+        SizedBox(height: 5),
         Align(
           alignment: Alignment.center,
           child: ElevatedButton(

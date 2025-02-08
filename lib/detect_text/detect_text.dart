@@ -1,5 +1,7 @@
+import 'package:ai_generated_content_detector/detect_text/text.dart';
 import 'package:ai_generated_content_detector/detect_text/input_form.dart';
 import 'package:ai_generated_content_detector/themes/template.dart';
+import 'package:ai_generated_content_detector/themes/varaibles.dart';
 import 'package:flutter/material.dart';
 
 class DetectText extends StatefulWidget {
@@ -15,7 +17,19 @@ class _DetectTextState extends State<DetectText> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: MyAppbar(title: "Analyze Text"),
-        body: SingleChildScrollView(child: InputTextField()));
+      appBar: MyAppbar(title: "Analyze Text"),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.all(screenBorderMargin),
+          child: Column(
+            children: [
+              IntroductionText(),
+              SizedBox(height: 15),
+              InputTextField(),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
