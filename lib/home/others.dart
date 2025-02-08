@@ -6,14 +6,25 @@ class OthersGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridView.count(
-      shrinkWrap: true, // Prevents infinite height issues
-      physics:
-          const NeverScrollableScrollPhysics(), // Prevents scroll conflicts
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
       crossAxisSpacing: 10,
       mainAxisSpacing: 10,
       crossAxisCount: 2,
       children: [
-        GeminiButton(),
+        const GeminiButton(),
+        Column(
+          children: const [
+            Expanded(
+              child: PlaceholderButton(
+                  icon: Icons.volunteer_activism, text: "Support us"),
+            ),
+            SizedBox(height: 10),
+            Expanded(
+              child: PlaceholderButton(icon: Icons.code, text: "Source Code"),
+            ),
+          ],
+        ),
       ],
     );
   }
@@ -32,9 +43,7 @@ class GeminiButton extends StatelessWidget {
         Navigator.pushNamed(
           context,
           '/gemini',
-          arguments: {
-            'title': "Chatbot",
-          },
+          arguments: {'title': "Chatbot"},
         );
       },
       child: Container(
@@ -51,7 +60,7 @@ class GeminiButton extends StatelessWidget {
               Icon(
                 Icons.forum,
                 color: colorScheme.onSurface,
-                size: textTheme.bodyMedium?.fontSize,
+                size: textTheme.headlineLarge?.fontSize,
               ),
               const SizedBox(height: 5),
               RichText(
@@ -66,6 +75,45 @@ class GeminiButton extends StatelessWidget {
               ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class PlaceholderButton extends StatelessWidget {
+  final IconData icon;
+  final String text;
+
+  const PlaceholderButton({super.key, required this.icon, required this.text});
+
+  @override
+  Widget build(BuildContext context) {
+    ColorScheme colorScheme = Theme.of(context).colorScheme;
+    TextTheme textTheme = Theme.of(context).textTheme;
+
+    return Container(
+      padding: const EdgeInsets.all(8), // Reduced padding
+      decoration: BoxDecoration(
+        color: colorScheme.tertiaryContainer,
+        borderRadius: BorderRadius.circular(11.75),
+      ),
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Icon(
+              icon,
+              color: colorScheme.onSurface,
+              size: textTheme.bodyMedium?.fontSize, // Smaller icon size
+            ),
+            const SizedBox(height: 5),
+            Text(
+              text,
+              style: textTheme.bodySmall, // Smaller text style
+            ),
+          ],
         ),
       ),
     );
