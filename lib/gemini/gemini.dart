@@ -64,100 +64,103 @@ class _GeminiPanelState extends State<GeminiPanel> {
 
     return Scaffold(
       appBar: MyAppbar(title: "Chatbot"),
-      body: Stack(
+      body: Column(
         children: [
-          ListView.separated(
-            padding: EdgeInsets.all(screenBorderMargin),
-            itemCount: history.reversed.length,
-            controller: _scrollController,
-            reverse: true,
-            itemBuilder: (context, index) {
-              var content = history.reversed.toList()[index];
-              var text = content.parts
-                  .whereType<ai.TextPart>()
-                  .map<String>((e) => e.text)
-                  .join('');
-              return MessageTile(
-                sendByMe: content.role == 'user',
-                message: text,
-              );
-            },
-            separatorBuilder: (context, index) {
-              return const SizedBox(
-                height: 15,
-              );
-            },
+          Expanded(
+            child: ListView.separated(
+              padding: EdgeInsets.all(screenBorderMargin),
+              itemCount: history.reversed.length,
+              controller: _scrollController,
+              reverse: true,
+              itemBuilder: (context, index) {
+                var content = history.reversed.toList()[index];
+                var text = content.parts
+                    .whereType<ai.TextPart>()
+                    .map<String>((e) => e.text)
+                    .join('');
+                return MessageTile(
+                  sendByMe: content.role == 'user',
+                  message: text,
+                );
+              },
+              separatorBuilder: (context, index) {
+                return const SizedBox(
+                  height: 15,
+                );
+              },
+            ),
           ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-              width: MediaQuery.of(context).size.width,
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
-              decoration: BoxDecoration(
-                color: colorScheme.surfaceContainer,
-              ),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: SizedBox(
-                      height: 50,
-                      child: TextField(
-                        controller: _textController,
-                        autofocus: true,
-                        focusNode: _textFieldFocus,
-                        decoration: InputDecoration(
-                            hintText: "Ask anything...",
-                            hintStyle: textTheme.bodyMedium?.copyWith(
-                                fontStyle: FontStyle.italic,
-                                fontWeight: FontWeight.normal,
-                                color: colorScheme.onSecondary),
-                            filled: true,
-                            fillColor: colorScheme.surfaceBright,
-                            contentPadding: const EdgeInsets.symmetric(
-                                horizontal: 15, vertical: 15),
-                            border: OutlineInputBorder(
-                                borderSide: BorderSide.none,
-                                borderRadius: BorderRadius.circular(7.5))),
+          Container(
+            width: MediaQuery.of(context).size.width,
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
+            decoration: BoxDecoration(
+              color: colorScheme.surfaceContainer,
+            ),
+            child: Row(
+              children: [
+                Expanded(
+                  child: SizedBox(
+                    height: 50,
+                    child: TextField(
+                      controller: _textController,
+                      autofocus: true,
+                      focusNode: _textFieldFocus,
+                      decoration: InputDecoration(
+                        hintText: "Ask anything...",
+                        hintStyle: textTheme.bodyMedium?.copyWith(
+                          fontStyle: FontStyle.italic,
+                          fontWeight: FontWeight.normal,
+                          color: colorScheme.onSecondary,
+                        ),
+                        filled: true,
+                        fillColor: colorScheme.surfaceBright,
+                        contentPadding: const EdgeInsets.symmetric(
+                            horizontal: 15, vertical: 15),
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide.none,
+                          borderRadius: BorderRadius.circular(7.5),
+                        ),
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    width: 15,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        history.add(ai.Content(
-                            'user', [ai.TextPart(_textController.text)]));
-                      });
-                      _sendChatMessage(_textController.text, history.length);
-                    },
-                    child: Container(
-                      width: 50,
-                      height: 50,
-                      alignment: Alignment.center,
-                      decoration:
-                          BoxDecoration(shape: BoxShape.circle, boxShadow: [
+                ),
+                const SizedBox(width: 15), // Fixed misplaced bracket issue
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      history.add(ai.Content(
+                          'user', [ai.TextPart(_textController.text)]));
+                    });
+                    _sendChatMessage(_textController.text, history.length);
+                  },
+                  child: Container(
+                    width: 50,
+                    height: 50,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      boxShadow: [
                         BoxShadow(
-                            offset: const Offset(1, 1),
-                            blurRadius: 0,
-                            spreadRadius: 5,
-                            color: colorScheme.surfaceBright)
-                      ]),
-                      child: _loading
-                          ? Center(
-                              child: CircularProgressIndicator.adaptive(
-                                backgroundColor: colorScheme.tertiary,
-                              ),
-                            )
-                          : Icon(
-                              Icons.send_rounded,
-                              color: colorScheme.onError,
-                            ),
+                          offset: const Offset(1, 1),
+                          blurRadius: 0,
+                          spreadRadius: 5,
+                          color: colorScheme.surfaceBright,
+                        ),
+                      ],
                     ),
-                  )
-                ],
-              ),
+                    child: _loading
+                        ? Center(
+                            child: CircularProgressIndicator.adaptive(
+                              backgroundColor: colorScheme.tertiary,
+                            ),
+                          )
+                        : Icon(
+                            Icons.send_rounded,
+                            color: colorScheme.onError,
+                          ),
+                  ),
+                ),
+              ],
             ),
           ),
         ],
