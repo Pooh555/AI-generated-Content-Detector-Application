@@ -5,7 +5,7 @@ ColorScheme darkDefault(context) {
     brightness: Brightness.dark,
     primary: Color.fromRGBO(17, 17, 17, 1),
     error: Color.fromARGB(255, 255, 147, 147),
-    errorContainer: Color.fromARGB(255, 255, 216, 86),
+    errorContainer: Color.fromRGBO(54, 54, 54, 0.502),
     inversePrimary: Color.fromARGB(255, 219, 54, 54),
     inverseSurface: Color.fromARGB(255, 210, 235, 255),
     onError: Color.fromARGB(255, 255, 147, 147),
