@@ -10,23 +10,23 @@ class ServicesGridWidget extends StatelessWidget {
 
     // Define service icons
     Map<String, Icon> servicesIconPath = {
-      "Audio": Icon(
-        Icons.music_note,
-        color: colorScheme.onSurface,
-        size: textTheme.headlineMedium?.fontSize,
-      ),
-      "About": Icon(
-        Icons.info,
-        color: colorScheme.onSurface,
-        size: textTheme.headlineMedium?.fontSize,
-      ),
-      "Help": Icon(
-        Icons.help,
+      "Text": Icon(
+        Icons.description,
         color: colorScheme.onSurface,
         size: textTheme.headlineMedium?.fontSize,
       ),
       "Image": Icon(
         Icons.image,
+        color: colorScheme.onSurface,
+        size: textTheme.headlineMedium?.fontSize,
+      ),
+      "Audio": Icon(
+        Icons.music_note,
+        color: colorScheme.onSurface,
+        size: textTheme.headlineMedium?.fontSize,
+      ),
+      "Video": Icon(
+        Icons.play_circle,
         color: colorScheme.onSurface,
         size: textTheme.headlineMedium?.fontSize,
       ),
@@ -40,13 +40,13 @@ class ServicesGridWidget extends StatelessWidget {
         color: colorScheme.onSurface,
         size: textTheme.headlineMedium?.fontSize,
       ),
-      "Text": Icon(
-        Icons.description,
+      "About": Icon(
+        Icons.info,
         color: colorScheme.onSurface,
         size: textTheme.headlineMedium?.fontSize,
       ),
-      "Video": Icon(
-        Icons.play_circle,
+      "Help": Icon(
+        Icons.help,
         color: colorScheme.onSurface,
         size: textTheme.headlineMedium?.fontSize,
       ),
