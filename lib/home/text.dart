@@ -12,7 +12,7 @@ class WelcomeText extends StatelessWidget {
     return RichText(
       textAlign: TextAlign.center,
       text: TextSpan(
-        children: <TextSpan>[
+        children: [
           TextSpan(
             text: 'Beyond the illusion\n',
             style: textTheme.headlineLarge,

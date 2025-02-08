@@ -5,3 +5,4 @@ final int maxTextLength = 4096;
 final int minTextLength = 30;
 final int maxTextLine = 4096;
 final int minTextLine = 5;
+final String fontFamily = "glacial";

@@ -4,6 +4,7 @@ import 'package:ai_generated_content_detector/detect_image/text.dart';
 import 'package:ai_generated_content_detector/home/carousel.dart';
 import 'package:ai_generated_content_detector/themes/path.dart';
 import 'package:ai_generated_content_detector/themes/template.dart';
+import 'package:ai_generated_content_detector/themes/varaibles.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:http/http.dart' as http;
@@ -92,7 +93,7 @@ class _DetectImageState extends State<DetectImage> {
     return Scaffold(
         appBar: MyAppbar(title: "Analyze Image"),
         body: SingleChildScrollView(
-          padding: const EdgeInsets.all(20.0),
+          padding: EdgeInsets.all(screenBorderMargin),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
