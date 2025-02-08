@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:ai_generated_content_detector/keys.dart';
 import 'package:ai_generated_content_detector/themes/template.dart';
+import 'package:ai_generated_content_detector/themes/varaibles.dart';
 import 'package:flutter/material.dart';
 import 'package:google_generative_ai/google_generative_ai.dart' as ai;
 
@@ -59,13 +60,14 @@ class _GeminiPanelState extends State<GeminiPanel> {
   @override
   Widget build(BuildContext context) {
     ColorScheme colorScheme = Theme.of(context).colorScheme;
+    TextTheme textTheme = Theme.of(context).textTheme;
 
     return Scaffold(
       appBar: MyAppbar(title: "Chatbot"),
       body: Stack(
         children: [
           ListView.separated(
-            padding: const EdgeInsets.fromLTRB(15, 0, 15, 90),
+            padding: EdgeInsets.all(screenBorderMargin),
             itemCount: history.reversed.length,
             controller: _scrollController,
             reverse: true,
@@ -92,27 +94,30 @@ class _GeminiPanelState extends State<GeminiPanel> {
               width: MediaQuery.of(context).size.width,
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
               decoration: BoxDecoration(
-                  color: colorScheme.error,
-                  border: Border(top: BorderSide(color: colorScheme.error))),
+                color: colorScheme.surfaceContainer,
+              ),
               child: Row(
                 children: [
                   Expanded(
                     child: SizedBox(
-                      height: 55,
+                      height: 50,
                       child: TextField(
                         controller: _textController,
                         autofocus: true,
                         focusNode: _textFieldFocus,
                         decoration: InputDecoration(
-                            hintText: 'Ask me anything...',
-                            hintStyle: TextStyle(color: colorScheme.error),
+                            hintText: "Ask anything...",
+                            hintStyle: textTheme.bodyMedium?.copyWith(
+                                fontStyle: FontStyle.italic,
+                                fontWeight: FontWeight.normal,
+                                color: colorScheme.onSecondary),
                             filled: true,
-                            fillColor: Colors.grey.shade200,
+                            fillColor: colorScheme.surfaceBright,
                             contentPadding: const EdgeInsets.symmetric(
                                 horizontal: 15, vertical: 15),
                             border: OutlineInputBorder(
                                 borderSide: BorderSide.none,
-                                borderRadius: BorderRadius.circular(10.0))),
+                                borderRadius: BorderRadius.circular(7.5))),
                       ),
                     ),
                   ),
@@ -137,17 +142,17 @@ class _GeminiPanelState extends State<GeminiPanel> {
                             offset: const Offset(1, 1),
                             blurRadius: 0,
                             spreadRadius: 5,
-                            color: colorScheme.error)
+                            color: colorScheme.surfaceBright)
                       ]),
                       child: _loading
-                          ? const Center(
+                          ? Center(
                               child: CircularProgressIndicator.adaptive(
-                                backgroundColor: Colors.white,
+                                backgroundColor: colorScheme.tertiary,
                               ),
                             )
                           : Icon(
                               Icons.send_rounded,
-                              color: colorScheme.error,
+                              color: colorScheme.onError,
                             ),
                     ),
                   )
@@ -242,13 +247,13 @@ class MessageTile extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.all(12.0),
           decoration: BoxDecoration(
-            color: sendByMe ? colorScheme.error : colorScheme.error,
+            color: sendByMe ? colorScheme.onError : colorScheme.tertiary,
             borderRadius: BorderRadius.circular(8.0),
           ),
           child: Text(
             message,
             style: TextStyle(
-              color: sendByMe ? Colors.white : Colors.black,
+              color: sendByMe ? colorScheme.onPrimary : colorScheme.secondary,
               fontSize: 16.0,
             ),
           ),
