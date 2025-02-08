@@ -61,6 +61,34 @@ List<Map<String, String>> detectImageCarouselImagesPaths = [
   },
 ];
 
+List<Map<String, String>> detectTextCarouselImagesPaths = [
+  {
+    "path": "assets/images/detect_text_carousel/carousel_image.1.jpg",
+    "label": "ChatGPT",
+    "description": "The revolutionary generative AI.",
+  },
+  {
+    "path": "assets/images/detect_text_carousel/carousel_image.2.jpg",
+    "label": "Gemini",
+    "description": "Google's novel chatbot model.",
+  },
+  {
+    "path": "assets/images/detect_text_carousel/carousel_image.3.jpg",
+    "label": "DeepSeek",
+    "description": "China's open source Generative chatbot.",
+  },
+  {
+    "path": "assets/images/detect_text_carousel/carousel_image.4.jpg",
+    "label": "LLaMA",
+    "description": "Meta's giant AI milestone.",
+  },
+  {
+    "path": "assets/images/detect_text_carousel/carousel_image.5.jpg",
+    "label": "PH555",
+    "description": "Pooh555's LLM prototype.",
+  },
+];
+
 List<String> quickMenuImagesPath = [
   "assets/images/quick_menu/image.jpg",
   "assets/images/quick_menu/text.jpg",
