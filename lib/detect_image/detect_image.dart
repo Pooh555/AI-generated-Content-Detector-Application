@@ -71,8 +71,6 @@ class _DetectImageState extends State<DetectImage> {
           _predictionConfidence = ""; // Clear confidence on error
           _isPredicting = false; // Set predicting state to false
         });
-        print(
-            "Error: ${response.statusCode}, Response: ${response.body}"); // Log error
       }
     } catch (e) {
       setState(() {
@@ -80,7 +78,6 @@ class _DetectImageState extends State<DetectImage> {
         _predictionConfidence = ""; // Clear confidence on exception
         _isPredicting = false; // Set predicting state to false
       });
-      print("Exception during upload: ${e.toString()}"); // Log exception
     }
   }
 

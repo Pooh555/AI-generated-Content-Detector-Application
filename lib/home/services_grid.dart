@@ -66,16 +66,22 @@ class ServicesGridWidget extends StatelessWidget {
             onTap: () {
               Navigator.of(context).pushNamed('/${entry.key.toLowerCase()}');
             },
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                entry.value, // Icon widget
-                const SizedBox(height: 5),
-                Text(
-                  entry.key,
-                  style: textTheme.labelSmall,
-                ),
-              ],
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                border: Border.all(color: colorScheme.onSurface, width: 0.5),
+                borderRadius: BorderRadius.all(Radius.circular(10.0)),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  entry.value, // Icon widget
+                  const SizedBox(height: 5),
+                  Text(
+                    entry.key,
+                    style: textTheme.labelSmall,
+                  ),
+                ],
+              ),
             ),
           );
         }).toList(),
