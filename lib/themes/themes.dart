@@ -20,7 +20,7 @@ ColorScheme darkDefault(context) {
     outlineVariant: Color.fromRGBO(255, 161, 161, 1),
     scrim: Color.fromRGBO(56, 56, 56, 1),
     shadow: Color.fromRGBO(0, 0, 0, 1),
-    secondary: Color.fromRGBO(41, 41, 41, 1),
+    secondary: Color.fromRGBO(32, 32, 32, 1),
     surface: Color.fromRGBO(22, 22, 22, 1),
     surfaceTint: Color.fromRGBO(73, 146, 255, 1),
     surfaceBright: Color.fromRGBO(255, 255, 255, 1),

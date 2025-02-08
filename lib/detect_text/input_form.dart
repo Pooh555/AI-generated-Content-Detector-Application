@@ -1,3 +1,4 @@
+import 'package:ai_generated_content_detector/detect_text/text.dart';
 import 'package:ai_generated_content_detector/themes/varaibles.dart';
 import 'package:flutter/material.dart';
 
@@ -50,7 +51,11 @@ class _InputTextFieldState extends State<InputTextField> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Padding(
-          padding: EdgeInsets.all(screenBorderMargin),
+          padding: EdgeInsets.only(
+              top: screenBorderMargin,
+              bottom: screenBorderMargin,
+              left: screenBorderMargin,
+              right: screenBorderMargin),
           child: TextField(
             controller: _controller,
             maxLength: maxTextLength,
@@ -59,6 +64,8 @@ class _InputTextFieldState extends State<InputTextField> {
             expands: false,
             style: textTheme.bodySmall,
             decoration: InputDecoration(
+              fillColor: colorScheme.secondary,
+              filled: true,
               border: OutlineInputBorder(),
               focusedBorder: OutlineInputBorder(
                 borderSide: BorderSide(
@@ -76,6 +83,18 @@ class _InputTextFieldState extends State<InputTextField> {
                   fontStyle: FontStyle.italic, color: colorScheme.onSecondary),
               alignLabelWithHint: true,
             ),
+          ),
+        ),
+        SizedBox(height: 15),
+        Align(
+          alignment: Alignment.center,
+          child: ElevatedButton(
+            onPressed: () {
+              String text = _controller.text;
+              // TODO: Send th message the the server
+              // print('Submitted: $text');
+            },
+            child: UploadTextText(title: "See the result"),
           ),
         ),
       ],

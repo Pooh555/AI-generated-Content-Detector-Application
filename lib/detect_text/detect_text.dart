@@ -15,6 +15,7 @@ class _DetectTextState extends State<DetectText> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: MyAppbar(title: "Analyze Text"), body: InputTextField());
+        appBar: MyAppbar(title: "Analyze Text"),
+        body: SingleChildScrollView(child: InputTextField()));
   }
 }
