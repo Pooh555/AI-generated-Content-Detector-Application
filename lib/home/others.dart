@@ -18,7 +18,10 @@ class OthersGrid extends StatelessWidget {
           children: const [
             Expanded(
               child: PlaceholderButton(
-                  icon: Icons.volunteer_activism, text: "Support us"),
+                icon: Icons.volunteer_activism,
+                text: "Support us",
+                url: "https://my.fsf.org/donate",
+              ),
             ),
             SizedBox(height: 10),
             Expanded(
