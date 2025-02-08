@@ -1,3 +1,4 @@
+import 'package:ai_generated_content_detector/detect_text/input_form.dart';
 import 'package:ai_generated_content_detector/themes/template.dart';
 import 'package:flutter/material.dart';
 
@@ -13,6 +14,7 @@ class _DetectTextState extends State<DetectText> {
   @override
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: MyAppbar(title: "Analyze Text"), body: Container());
+    return Scaffold(
+        appBar: MyAppbar(title: "Analyze Text"), body: InputTextField());
   }
 }

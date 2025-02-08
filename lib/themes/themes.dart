@@ -16,6 +16,8 @@ ColorScheme darkDefault(context) {
     onPrimaryFixed: Color.fromRGBO(63, 63, 63, 1),
     onSecondary: Color.fromRGBO(163, 163, 163, 1),
     onSurface: Color.fromRGBO(216, 216, 216, 1),
+    outline: Color.fromRGBO(255, 193, 193, 1),
+    outlineVariant: Color.fromRGBO(255, 161, 161, 1),
     scrim: Color.fromRGBO(56, 56, 56, 1),
     shadow: Color.fromRGBO(0, 0, 0, 1),
     secondary: Color.fromRGBO(41, 41, 41, 1),
