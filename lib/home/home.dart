@@ -1,3 +1,4 @@
+import 'package:ai_generated_content_detector/home/others.dart';
 import 'package:ai_generated_content_detector/home/service_widgets.dart';
 import 'package:ai_generated_content_detector/home/services_grid.dart';
 import 'package:ai_generated_content_detector/themes/path.dart';
@@ -45,12 +46,15 @@ class _HomePageState extends State<HomePage> {
                   alignment: Alignment.centerLeft,
                   child: const ServicesText(),
                 ),
+                const SizedBox(height: 15),
                 const ServicesGridWidget(),
                 const SizedBox(height: 15),
                 Align(
                   alignment: Alignment.centerLeft,
                   child: const UtilitiesText(),
                 ),
+                const SizedBox(height: 15),
+                OthersGrid(),
               ],
             ),
           ),

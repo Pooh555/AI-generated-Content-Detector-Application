@@ -104,6 +104,7 @@ List<String> quickMenuPages = [
 List<String> pages = [
   "/audio",
   "/about",
+  "/gemini",
   "/help",
   "/image",
   "/profile",
