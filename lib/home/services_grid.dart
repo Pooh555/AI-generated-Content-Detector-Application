@@ -13,51 +13,50 @@ class ServicesGridWidget extends StatelessWidget {
       "Audio": Icon(
         Icons.music_note,
         color: colorScheme.onSurface,
-        size: textTheme.bodySmall?.fontSize,
+        size: textTheme.headlineMedium?.fontSize,
       ),
       "About": Icon(
         Icons.info,
         color: colorScheme.onSurface,
-        size: textTheme.bodySmall?.fontSize,
+        size: textTheme.headlineMedium?.fontSize,
       ),
       "Help": Icon(
         Icons.help,
         color: colorScheme.onSurface,
-        size: textTheme.bodySmall?.fontSize,
+        size: textTheme.headlineMedium?.fontSize,
       ),
       "Image": Icon(
         Icons.image,
         color: colorScheme.onSurface,
-        size: textTheme.bodySmall?.fontSize,
+        size: textTheme.headlineMedium?.fontSize,
       ),
       "Profile": Icon(
         Icons.person,
         color: colorScheme.onSurface,
-        size: textTheme.bodySmall?.fontSize,
+        size: textTheme.headlineMedium?.fontSize,
       ),
       "Settings": Icon(
         Icons.settings,
         color: colorScheme.onSurface,
-        size: textTheme.bodySmall?.fontSize,
+        size: textTheme.headlineMedium?.fontSize,
       ),
       "Text": Icon(
         Icons.description,
         color: colorScheme.onSurface,
-        size: textTheme.bodySmall?.fontSize,
+        size: textTheme.headlineMedium?.fontSize,
       ),
       "Video": Icon(
         Icons.play_circle,
         color: colorScheme.onSurface,
-        size: textTheme.bodySmall?.fontSize,
+        size: textTheme.headlineMedium?.fontSize,
       ),
     };
 
     return Padding(
       padding: const EdgeInsets.all(0.0),
       child: GridView.count(
-        shrinkWrap: true, // Prevents infinite height issues
-        physics:
-            const NeverScrollableScrollPhysics(), // Prevents scroll conflicts
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
         crossAxisSpacing: 10,
         mainAxisSpacing: 10,
         crossAxisCount: 4,
@@ -74,7 +73,7 @@ class ServicesGridWidget extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  entry.value, // Icon widget
+                  entry.value,
                   const SizedBox(height: 5),
                   Text(
                     entry.key,

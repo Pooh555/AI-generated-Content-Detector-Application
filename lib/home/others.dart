@@ -20,9 +20,12 @@ class OthersGrid extends StatelessWidget {
 }
 
 class GeminiButton extends StatelessWidget {
+  const GeminiButton({super.key});
+
   @override
   Widget build(BuildContext context) {
     ColorScheme colorScheme = Theme.of(context).colorScheme;
+    TextTheme textTheme = Theme.of(context).textTheme;
 
     return GestureDetector(
       onTap: () {
@@ -35,18 +38,34 @@ class GeminiButton extends StatelessWidget {
         );
       },
       child: Container(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(11.75),
         decoration: BoxDecoration(
-          color: colorScheme.error,
-          borderRadius: BorderRadius.circular(12.0),
+          color: colorScheme.tertiaryContainer,
+          borderRadius: BorderRadius.circular(11.75),
         ),
-        child: const Text(
-          'Gemini',
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.forum,
+                color: colorScheme.onSurface,
+                size: textTheme.bodyMedium?.fontSize,
+              ),
+              const SizedBox(height: 5),
+              RichText(
+                text: TextSpan(
+                  children: <TextSpan>[
+                    TextSpan(
+                      text: " Chatbot",
+                      style: textTheme.bodyMedium,
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
-          textAlign: TextAlign.center,
         ),
       ),
     );
