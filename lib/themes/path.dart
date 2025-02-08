@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 List<Map<String, String>> homeCarouselImagesPaths = [
   {
     "path": "assets/images/home_carousel/carousel_image.1.jpg",
