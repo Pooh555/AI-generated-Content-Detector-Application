@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:ai_generated_content_detector/keys.dart';
+import 'package:ai_generated_content_detector/themes/template.dart';
+import 'package:ai_generated_content_detector/themes/varaibles.dart';
 import 'package:flutter/material.dart';
 import 'package:google_generative_ai/google_generative_ai.dart' as ai;
 
@@ -11,25 +13,18 @@ class GeminiPanel extends StatefulWidget {
   State<GeminiPanel> createState() => _GeminiPanelState();
 }
 
-// Define the State class for GeminiPanel
 class _GeminiPanelState extends State<GeminiPanel> {
-  // Declare necessary variables
-  List<ai.Content> history = []; // List to store chat history
-  late final ai.GenerativeModel _model; // Instance of GenerativeModel
-  late final ai.ChatSession _chat; // Instance of ChatSession
-  final ScrollController _scrollController =
-      ScrollController(); // Controller for scrolling
-  final TextEditingController _textController =
-      TextEditingController(); // Controller for text input field
-  final FocusNode _textFieldFocus =
-      FocusNode(); // Focus node for text input field
-  bool _loading = false; // Flag to indicate if chat is loading
+  List<ai.Content> history = [];
+  late final ai.GenerativeModel _model;
+  late final ai.ChatSession _chat;
+  final ScrollController _scrollController = ScrollController();
+  final TextEditingController _textController = TextEditingController();
+  final FocusNode _textFieldFocus = FocusNode();
+  bool _loading = false;
 
-  // State variables for warning message visibility and timer
   bool _showWarning = true;
   late Timer _timer;
 
-  // Function to scroll to the bottom of the chat history
   void _scrollDown() {
     WidgetsBinding.instance.addPostFrameCallback(
       (_) => _scrollController.animateTo(
@@ -40,19 +35,15 @@ class _GeminiPanelState extends State<GeminiPanel> {
     );
   }
 
-  // Initialization method for the state
   @override
   void initState() {
     super.initState();
-    // Initialize GenerativeModel with specified model and API key
     _model = ai.GenerativeModel(
-      model: 'gemini-pro', // model name
+      model: 'gemini-pro',
       apiKey: apiKey,
     );
-    // Start a new chat session using the initialized model
     _chat = _model.startChat();
 
-    // Start timer to hide warning after 5 seconds
     _timer = Timer(const Duration(seconds: 5), () {
       setState(() {
         _showWarning = false;
@@ -60,130 +51,116 @@ class _GeminiPanelState extends State<GeminiPanel> {
     });
   }
 
-  // Dispose method to cancel timer
   @override
   void dispose() {
-    _timer.cancel(); // Cancel timer to avoid memory leaks
+    _timer.cancel();
     super.dispose();
   }
 
-  // Build method to create the UI for the GeminiPanel
   @override
   Widget build(BuildContext context) {
     ColorScheme colorScheme = Theme.of(context).colorScheme;
+    TextTheme textTheme = Theme.of(context).textTheme;
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Your Medical Friend'), // App bar title
-      ),
-      body: Stack(
+      appBar: MyAppbar(title: "Chatbot"),
+      body: Column(
         children: [
-          // Widget to display chat history in a scrollable list
-          ListView.separated(
-            padding: const EdgeInsets.fromLTRB(15, 0, 15, 90),
-            itemCount: history.reversed.length,
-            controller: _scrollController,
-            reverse: true,
-            itemBuilder: (context, index) {
-              // Build each chat message tile based on history
-              var content = history.reversed.toList()[index];
-              var text = content.parts
-                  .whereType<ai.TextPart>()
-                  .map<String>((e) => e.text)
-                  .join('');
-              return MessageTile(
-                sendByMe: content.role == 'user',
-                message: text,
-              );
-            },
-            separatorBuilder: (context, index) {
-              return const SizedBox(
-                height: 15,
-              );
-            },
+          Expanded(
+            child: ListView.separated(
+              padding: EdgeInsets.all(screenBorderMargin),
+              itemCount: history.reversed.length,
+              controller: _scrollController,
+              reverse: true,
+              itemBuilder: (context, index) {
+                var content = history.reversed.toList()[index];
+                var text = content.parts
+                    .whereType<ai.TextPart>()
+                    .map<String>((e) => e.text)
+                    .join('');
+                return MessageTile(
+                  sendByMe: content.role == 'user',
+                  message: text,
+                );
+              },
+              separatorBuilder: (context, index) {
+                return const SizedBox(
+                  height: 15,
+                );
+              },
+            ),
           ),
-          // Widget for the input area at the bottom of the screen
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-              width: MediaQuery.of(context).size.width,
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
-              decoration: BoxDecoration(
-                  color: colorScheme.error,
-                  border: Border(top: BorderSide(color: colorScheme.error))),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: SizedBox(
-                      height: 55,
-                      child: TextField(
-                        controller: _textController,
-                        autofocus: true,
-                        focusNode: _textFieldFocus,
-                        decoration: InputDecoration(
-                            hintText: 'Ask me anything...',
-                            hintStyle: TextStyle(color: colorScheme.error),
-                            filled: true,
-                            fillColor: Colors.grey.shade200,
-                            contentPadding: const EdgeInsets.symmetric(
-                                horizontal: 15, vertical: 15),
-                            border: OutlineInputBorder(
-                                borderSide: BorderSide.none,
-                                borderRadius: BorderRadius.circular(10.0))),
+          Container(
+            width: MediaQuery.of(context).size.width,
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
+            decoration: BoxDecoration(
+              color: colorScheme.surfaceContainer,
+            ),
+            child: Row(
+              children: [
+                Expanded(
+                  child: SizedBox(
+                    height: 50,
+                    child: TextField(
+                      controller: _textController,
+                      autofocus: true,
+                      focusNode: _textFieldFocus,
+                      decoration: InputDecoration(
+                        hintText: "Ask anything...",
+                        hintStyle: textTheme.bodyMedium?.copyWith(
+                          fontStyle: FontStyle.italic,
+                          fontWeight: FontWeight.normal,
+                          color: colorScheme.onSecondary,
+                        ),
+                        filled: true,
+                        fillColor: colorScheme.surfaceBright,
+                        contentPadding: const EdgeInsets.symmetric(
+                            horizontal: 15, vertical: 15),
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide.none,
+                          borderRadius: BorderRadius.circular(7.5),
+                        ),
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    width: 15,
-                  ),
-                  // Send button to send chat message
-                  GestureDetector(
-                    onTap: () {
-                      // Update UI state to add user message to history
-                      setState(() {
-                        history.add(ai.Content(
-                            'user', [ai.TextPart(_textController.text)]));
-                      });
-                      // Call method to send user message and handle response
-                      _sendChatMessage(_textController.text, history.length);
-                    },
-                    child: Container(
-                      width: 50,
-                      height: 50,
-                      alignment: Alignment.center,
-                      decoration:
-                          BoxDecoration(shape: BoxShape.circle, boxShadow: [
+                ),
+                const SizedBox(width: 15), // Fixed misplaced bracket issue
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      history.add(ai.Content(
+                          'user', [ai.TextPart(_textController.text)]));
+                    });
+                    _sendChatMessage(_textController.text, history.length);
+                  },
+                  child: Container(
+                    width: 50,
+                    height: 50,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      boxShadow: [
                         BoxShadow(
-                            offset: const Offset(1, 1),
-                            blurRadius: 0,
-                            spreadRadius: 5,
-                            color: colorScheme.error)
-                      ]),
-                      child: _loading
-                          ? const Center(
-                              child: CircularProgressIndicator.adaptive(
-                                backgroundColor: Colors.white,
-                              ),
-                            )
-                          : Icon(
-                              Icons.send_rounded,
-                              color: colorScheme.error,
-                            ),
+                          offset: const Offset(1, 1),
+                          blurRadius: 0,
+                          spreadRadius: 5,
+                          color: colorScheme.surfaceBright,
+                        ),
+                      ],
                     ),
-                  )
-                ],
-              ),
-            ),
-          ),
-          // Positioned widget for warning message
-          Positioned(
-            top: 5,
-            left: 18,
-            child: Visibility(
-              visible: _showWarning,
-              // child: buildWarningChatUsage(375.0, 75.0), // Commented out undefined method call
-              child:
-                  Container(), // Replaced with an empty Container to avoid error, consider implementing or removing this section completely
+                    child: _loading
+                        ? Center(
+                            child: CircularProgressIndicator.adaptive(
+                              backgroundColor: colorScheme.tertiary,
+                            ),
+                          )
+                        : Icon(
+                            Icons.send_rounded,
+                            color: colorScheme.onError,
+                          ),
+                  ),
+                ),
+              ],
             ),
           ),
         ],
@@ -191,43 +168,38 @@ class _GeminiPanelState extends State<GeminiPanel> {
     );
   }
 
-  // Function to send user message and process response
   Future<void> _sendChatMessage(String message, int historyIndex) async {
-    // Update UI state to indicate loading state
     setState(() {
       _loading = true;
-      _textController.clear(); // Clear text input field
-      _textFieldFocus.unfocus(); // Unfocus text input field
-      _scrollDown(); // Scroll to bottom of chat history
+      _textController.clear();
+      _textFieldFocus.unfocus();
+      _scrollDown();
     });
 
-    List<ai.Part> parts = []; // List to store parts of chat response
+    List<ai.Part> parts = [];
 
     try {
-      // Send user message to chat session and await response
       var response = _chat.sendMessageStream(
         ai.Content.text(message),
       );
       await for (var item in response) {
         var text = item.text;
         if (text == null) {
-          _showError('No response from API.'); // Show error if no response
+          _showError('No response from API.');
           return;
         } else {
-          // Update UI state to add model response to chat history
           setState(() {
             _loading = false;
-            parts.add(ai.TextPart(text)); // Add text part to response parts
+            parts.add(ai.TextPart(text));
             if ((history.length - 1) == historyIndex) {
-              history.removeAt(historyIndex); // Remove old history entry
+              history.removeAt(historyIndex);
             }
-            history.insert(historyIndex,
-                ai.Content('model', parts)); // Insert updated history entry
+            history.insert(historyIndex, ai.Content('model', parts));
           });
         }
       }
     } catch (e) {
-      _showError(e.toString()); // Show error if exception occurs
+      _showError(e.toString());
       setState(() {
         _loading = false;
       });
@@ -238,7 +210,6 @@ class _GeminiPanelState extends State<GeminiPanel> {
     }
   }
 
-  // Function to show error dialog
   void _showError(String message) {
     showDialog(
       context: context,
@@ -251,7 +222,7 @@ class _GeminiPanelState extends State<GeminiPanel> {
           actions: [
             TextButton(
               onPressed: () {
-                Navigator.of(context).pop(); // Dismiss dialog
+                Navigator.of(context).pop();
               },
               child: const Text('OK'),
             )
@@ -262,10 +233,9 @@ class _GeminiPanelState extends State<GeminiPanel> {
   }
 }
 
-// Widget class for displaying chat message tile
 class MessageTile extends StatelessWidget {
-  final bool sendByMe; // Flag to indicate if message is sent by user
-  final String message; // Content of the message
+  final bool sendByMe;
+  final String message;
 
   const MessageTile({super.key, required this.sendByMe, required this.message});
 
@@ -280,13 +250,13 @@ class MessageTile extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.all(12.0),
           decoration: BoxDecoration(
-            color: sendByMe ? colorScheme.error : colorScheme.error,
+            color: sendByMe ? colorScheme.onError : colorScheme.tertiary,
             borderRadius: BorderRadius.circular(8.0),
           ),
           child: Text(
             message,
             style: TextStyle(
-              color: sendByMe ? Colors.white : Colors.black,
+              color: sendByMe ? colorScheme.onPrimary : colorScheme.secondary,
               fontSize: 16.0,
             ),
           ),

@@ -30,9 +30,9 @@ class _HomePageState extends State<HomePage> {
             padding: EdgeInsets.all(screenBorderMargin),
             child: Column(
               children: [
-                const SizedBox(height: 50),
+                const SizedBox(height: 75),
                 const WelcomeText(),
-                const SizedBox(height: 50),
+                const SizedBox(height: 75),
                 CarouselPanel(carouselImages: homeCarouselImagesPaths),
                 const SizedBox(height: 15),
                 Align(

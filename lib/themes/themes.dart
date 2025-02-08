@@ -8,8 +8,8 @@ ColorScheme darkDefault(context) {
     errorContainer: Color.fromRGBO(54, 54, 54, 0.502),
     inversePrimary: Color.fromARGB(255, 219, 54, 54),
     inverseSurface: Color.fromARGB(255, 210, 235, 255),
-    onError: Color.fromARGB(255, 255, 147, 147),
-    onErrorContainer: Color.fromARGB(255, 255, 124, 124),
+    onError: Color.fromARGB(255, 255, 107, 107),
+    onErrorContainer: Color.fromARGB(255, 87, 43, 43),
     onInverseSurface: Color.fromARGB(255, 255, 147, 147),
     onPrimary: Color.fromRGBO(226, 226, 226, 1),
     onPrimaryContainer: Color.fromRGBO(255, 255, 255, 1),
@@ -23,12 +23,14 @@ ColorScheme darkDefault(context) {
     shadow: Color.fromRGBO(0, 0, 0, 1),
     secondary: Color.fromRGBO(32, 32, 32, 1),
     surface: Color.fromRGBO(22, 22, 22, 1),
+    surfaceContainer: Color.fromRGBO(255, 132, 132, 1),
+    surfaceContainerHigh: Color.fromRGBO(100, 30, 30, 1),
     surfaceTint: Color.fromRGBO(0, 0, 0, 1),
-    surfaceBright: Color.fromRGBO(255, 255, 255, 1),
+    surfaceBright: Color.fromRGBO(255, 236, 236, 1),
     tertiary: Color.fromRGBO(207, 61, 61, 1),
     tertiaryContainer: Color.fromRGBO(255, 255, 255, 0.1),
     tertiaryFixed: Color.fromRGBO(255, 193, 193, 1),
-    tertiaryFixedDim: Color.fromRGBO(179, 179, 179, 1),
+    tertiaryFixedDim: Color.fromRGBO(63, 157, 245, 1),
   );
 }
 
