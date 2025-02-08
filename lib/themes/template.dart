@@ -11,15 +11,15 @@ class MyAppbar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: AppbarText(title: title),
-      backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-      leading: IconButton(
-        icon: const Icon(Icons.arrow_back_ios_new),
-        onPressed: () {
-          Navigator.pop(context);
-        },
-      ),
-    );
+        title: AppbarText(title: title),
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios_new),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        titleSpacing: 0.0);
   }
 }
 

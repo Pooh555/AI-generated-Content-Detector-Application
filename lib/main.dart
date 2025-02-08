@@ -1,5 +1,7 @@
 import 'package:ai_generated_content_detector/about/about.dart';
+import 'package:ai_generated_content_detector/gemini/gemini.dart';
 import 'package:ai_generated_content_detector/help/help.dart';
+import 'package:ai_generated_content_detector/keys.dart';
 import 'package:ai_generated_content_detector/profile/profile.dart';
 import 'package:ai_generated_content_detector/settings/settings.dart';
 import 'package:ai_generated_content_detector/themes/font.dart';
@@ -9,9 +11,12 @@ import 'package:ai_generated_content_detector/detect_text/detect_text.dart';
 import 'package:ai_generated_content_detector/detect_video/detect_video.dart';
 import 'package:ai_generated_content_detector/detect_voice/detect_audio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gemini/flutter_gemini.dart';
 import 'home/home.dart';
 
 void main() {
+  Gemini.init(apiKey: apiKey);
+
   runApp(const MyApp());
 }
 
@@ -33,6 +38,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/about': (context) => About(title: "About this application"),
         '/audio': (context) => DetectAudio(title: "Detect AI-generated Voice"),
+        '/gemini': (context) => GeminiPanel(title: "Gemini"),
         '/help': (context) => Help(title: "Help"),
         '/image': (context) => DetectImage(title: "Detect AI-generated Image"),
         '/profile': (context) => Profile(title: "Profile"),

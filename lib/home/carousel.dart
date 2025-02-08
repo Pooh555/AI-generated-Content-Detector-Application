@@ -67,7 +67,7 @@ class _CarouselPanelState extends State<CarouselPanel> {
                             ),
                             Text(
                               imageMap["label"]!,
-                              style: textTheme.displaySmall,
+                              style: textTheme.displayMedium,
                               textAlign: TextAlign.center,
                             ),
                             const Padding(
