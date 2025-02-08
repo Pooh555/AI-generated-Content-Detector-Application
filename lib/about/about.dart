@@ -72,7 +72,7 @@ class _AboutState extends State<About> {
                       text:
                           "This project is an extension a Kaggle competition.",
                       style: textTheme.bodySmall
-                          ?.copyWith(color: colorScheme.surfaceTint),
+                          ?.copyWith(color: colorScheme.tertiaryFixedDim),
                     ),
                   ],
                 ),
@@ -115,7 +115,7 @@ class _AboutState extends State<About> {
                     TextSpan(
                       text: "  - Image model (link)",
                       style: textTheme.bodySmall
-                          ?.copyWith(color: colorScheme.surfaceTint),
+                          ?.copyWith(color: colorScheme.tertiaryFixedDim),
                     ),
                   ],
                 ),
@@ -133,6 +133,7 @@ class _AboutState extends State<About> {
                 ),
               ),
             ),
+            SizedBox(height: 10),
             Center(
               child: InkWell(
                 onTap: () async {
@@ -143,9 +144,10 @@ class _AboutState extends State<About> {
                     throw 'Could not launch $url';
                   }
                 },
-                child: const Text(
+                child: Text(
                   "KVIS",
-                  style: TextStyle(color: Colors.blue),
+                  style: textTheme.headlineMedium
+                      ?.copyWith(color: colorScheme.tertiaryFixedDim),
                 ),
               ),
             ),

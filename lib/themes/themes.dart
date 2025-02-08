@@ -28,7 +28,7 @@ ColorScheme darkDefault(context) {
     tertiary: Color.fromRGBO(207, 61, 61, 1),
     tertiaryContainer: Color.fromRGBO(255, 255, 255, 0.1),
     tertiaryFixed: Color.fromRGBO(255, 193, 193, 1),
-    tertiaryFixedDim: Color.fromRGBO(179, 179, 179, 1),
+    tertiaryFixedDim: Color.fromRGBO(63, 157, 245, 1),
   );
 }
 

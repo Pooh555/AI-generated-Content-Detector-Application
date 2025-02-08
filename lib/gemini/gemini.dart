@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:ai_generated_content_detector/keys.dart';
+import 'package:ai_generated_content_detector/themes/template.dart';
 import 'package:flutter/material.dart';
 import 'package:google_generative_ai/google_generative_ai.dart' as ai;
 
@@ -60,9 +61,7 @@ class _GeminiPanelState extends State<GeminiPanel> {
     ColorScheme colorScheme = Theme.of(context).colorScheme;
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Your Medical Friend'),
-      ),
+      appBar: MyAppbar(title: "Chatbot"),
       body: Stack(
         children: [
           ListView.separated(
