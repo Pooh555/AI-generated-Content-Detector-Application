@@ -15,11 +15,11 @@ class IntroductionText extends StatelessWidget {
         text: TextSpan(
           children: <TextSpan>[
             TextSpan(
-              text: "Genuine or Generated?\n",
+              text: "Real or Fake?\n",
               style: textTheme.headlineMedium,
             ),
             TextSpan(
-              text: "Let's find out!",
+              text: "Reveal the reality!",
               style: textTheme.bodySmall?.copyWith(
                   fontStyle: FontStyle.italic, color: colorScheme.onSecondary),
             ),
