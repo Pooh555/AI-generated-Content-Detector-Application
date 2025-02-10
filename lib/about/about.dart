@@ -70,7 +70,7 @@ class _AboutState extends State<About> {
                   children: <TextSpan>[
                     TextSpan(
                       text:
-                          "This project is an extension a Kaggle competition.",
+                          "This project is an extension of a Kaggle competition.",
                       style: textTheme.bodySmall
                           ?.copyWith(color: colorScheme.tertiaryFixedDim),
                     ),
