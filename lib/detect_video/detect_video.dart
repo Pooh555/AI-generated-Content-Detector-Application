@@ -79,35 +79,45 @@ class _DetectVideoState extends State<DetectVideo> {
             children: [
               IntroductionText(),
               SizedBox(height: 15),
-              Center(
-                child: _controller != null && _controller!.value.isInitialized
-                    ? Stack(
-                        alignment: Alignment.bottomCenter,
-                        children: [
-                          AspectRatio(
-                            aspectRatio: _controller!.value.aspectRatio,
-                            child: VideoPlayer(_controller!),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(bottom: 12.0),
-                            child: Column(
-                              children: [
-                                Text(
-                                  videoTitle,
-                                  style: textTheme.displayMedium,
-                                  textAlign: TextAlign.center,
-                                ),
-                                Text(
-                                  videoDesc,
-                                  style: textTheme.bodySmall,
-                                  textAlign: TextAlign.center,
-                                ),
-                              ],
+              DecoratedBox(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12.0),
+                ),
+                child: Center(
+                  child: _controller != null && _controller!.value.isInitialized
+                      ? Stack(
+                          alignment: Alignment.bottomCenter,
+                          children: [
+                            ClipRRect(
+                              // Wrap AspectRatio with ClipRRect
+                              borderRadius: BorderRadius.circular(
+                                  12.0), // Apply borderRadius here
+                              child: AspectRatio(
+                                aspectRatio: _controller!.value.aspectRatio,
+                                child: VideoPlayer(_controller!),
+                              ),
                             ),
-                          ),
-                        ],
-                      )
-                    : const CircularProgressIndicator(),
+                            Padding(
+                              padding: EdgeInsets.only(bottom: 11.75),
+                              child: Column(
+                                children: [
+                                  Text(
+                                    videoTitle,
+                                    style: textTheme.displayMedium,
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  Text(
+                                    videoDesc,
+                                    style: textTheme.bodySmall,
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        )
+                      : const CircularProgressIndicator(),
+                ),
               ),
               SizedBox(height: 15),
               ElevatedButton(
