@@ -102,6 +102,9 @@ class _GeminiPanelState extends State<GeminiPanel> {
                   child: SizedBox(
                     height: 50,
                     child: TextField(
+                      style: textTheme.bodyMedium?.copyWith(
+                          fontWeight: FontWeight.normal,
+                          color: colorScheme.primary),
                       controller: _textController,
                       autofocus: true,
                       focusNode: _textFieldFocus,
