@@ -29,6 +29,7 @@ class _DetectVideoState extends State<DetectVideo> {
       VideoPlayerController.networkUrl(
         Uri.parse(
             "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"),
+        // Removed VideoPlayerOptions here
       ),
     );
   }
@@ -38,6 +39,7 @@ class _DetectVideoState extends State<DetectVideo> {
       _controller!.dispose();
     }
     _controller = newController;
+    _controller!.setLooping(true); // Enable looping here
     _controller!.initialize().then((_) {
       setState(() {
         _controller!.play();
@@ -55,7 +57,10 @@ class _DetectVideoState extends State<DetectVideo> {
         noVideoSelectedText = "A video is uploaded.";
 
         _initializeController(
-          VideoPlayerController.file(_videoFile!),
+          VideoPlayerController.file(
+            _videoFile!,
+            // Removed VideoPlayerOptions here
+          ),
         );
       });
     }
@@ -135,13 +140,7 @@ class _DetectVideoState extends State<DetectVideo> {
                   // print('Submitted: $video');
                 },
                 child: UploadVideoText(title: "Check your video"),
-              ), //   Padding(
-              //     padding: const EdgeInsets.all(8.0),
-              //     child: Text(
-              //       "Video Path: ${_videoFile!.path}",
-              //       textAlign: TextAlign.center,
-              //     ),
-              //   ),
+              ),
             ],
           ),
         ),
