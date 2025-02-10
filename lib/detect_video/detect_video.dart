@@ -49,8 +49,8 @@ class _DetectVideoState extends State<DetectVideo> {
     if (pickedFile != null) {
       setState(() {
         _videoFile = File(pickedFile.path);
-        videoTitle = ""; // Clear videoTitle
-        videoDesc = ""; // Clear videoDesc
+        videoTitle = "";
+        videoDesc = "";
         _initializeController(
           VideoPlayerController.file(_videoFile!),
         );
@@ -89,9 +89,7 @@ class _DetectVideoState extends State<DetectVideo> {
                           alignment: Alignment.bottomCenter,
                           children: [
                             ClipRRect(
-                              // Wrap AspectRatio with ClipRRect
-                              borderRadius: BorderRadius.circular(
-                                  12.0), // Apply borderRadius here
+                              borderRadius: BorderRadius.circular(12.0),
                               child: AspectRatio(
                                 aspectRatio: _controller!.value.aspectRatio,
                                 child: VideoPlayer(_controller!),
