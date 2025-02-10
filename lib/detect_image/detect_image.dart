@@ -48,7 +48,7 @@ class _DetectImageState extends State<DetectImage> {
       var request = http.MultipartRequest(
           'POST',
           Uri.parse(
-              'http://172.30.45.80:5000/classify_imageFile')); // Server IP address
+              'http://172.30.45.80:5000/classify_image')); // Server IP address
       request.files.add(await http.MultipartFile.fromPath(
           'image', _imageFile!.path)); // 'image' key must match Flask endpoint
 
