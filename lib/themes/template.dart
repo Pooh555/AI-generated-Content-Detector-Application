@@ -1,3 +1,4 @@
+import 'package:ai_generated_content_detector/themes/varaibles.dart';
 import 'package:flutter/material.dart';
 
 class MyAppbar extends StatelessWidget implements PreferredSizeWidget {
@@ -42,6 +43,36 @@ class AppbarText extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class ApologyText extends StatelessWidget {
+  const ApologyText({super.key, required this.title});
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    // Accessing the custom TextTheme from the app's theme
+    TextTheme textTheme = Theme.of(context).textTheme;
+    ColorScheme colorScheme = Theme.of(context).colorScheme;
+
+    return Padding(
+      padding: EdgeInsets.all(screenBorderMargin),
+      child: Align(
+          alignment: Alignment.center,
+          child: RichText(
+            textAlign: TextAlign.center,
+            text: TextSpan(
+              children: <TextSpan>[
+                TextSpan(
+                  text: title,
+                  style: textTheme.headlineLarge
+                      ?.copyWith(color: colorScheme.error),
+                ),
+              ],
+            ),
+          )),
     );
   }
 }
