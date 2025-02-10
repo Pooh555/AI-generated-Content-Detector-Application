@@ -52,7 +52,8 @@ class _DetectVideoState extends State<DetectVideo> {
         _videoFile = File(pickedFile.path);
         videoTitle = '';
         videoDesc = '';
-        noVideoSelectedText = '';
+        noVideoSelectedText = "A video is uploaded.";
+
         _initializeController(
           VideoPlayerController.file(_videoFile!),
         );
@@ -126,9 +127,15 @@ class _DetectVideoState extends State<DetectVideo> {
                 child: const UploadVideoText(title: "Upload a Video"),
               ),
               SizedBox(height: 15),
-              NoSelectedVideoText(title: noVideoSelectedText)
-              // if (_videoFile != null)
-              //   Padding(
+              NoSelectedVideoText(title: noVideoSelectedText),
+              SizedBox(height: 15),
+              ElevatedButton(
+                onPressed: () {
+                  // TODO: Send the video the the server
+                  // print('Submitted: $video');
+                },
+                child: UploadVideoText(title: "Check your video"),
+              ), //   Padding(
               //     padding: const EdgeInsets.all(8.0),
               //     child: Text(
               //       "Video Path: ${_videoFile!.path}",
