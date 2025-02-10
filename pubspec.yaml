@@ -41,6 +41,7 @@ dependencies:
   url_launcher: ^6.3.1
   flutter_gemini: ^3.0.0
   google_generative_ai: ^0.4.6
+  video_player: ^2.9.2
   
 flutter_icons:
   android: true

@@ -30,8 +30,8 @@ class IntroductionText extends StatelessWidget {
   }
 }
 
-class UploadImageText extends StatelessWidget {
-  const UploadImageText({super.key, required this.title});
+class UploadVideoText extends StatelessWidget {
+  const UploadVideoText({super.key, required this.title});
 
   final String title;
 
@@ -53,8 +53,8 @@ class UploadImageText extends StatelessWidget {
   }
 }
 
-class NoSelectedImageText extends StatelessWidget {
-  const NoSelectedImageText({super.key});
+class NoSelectedVideoText extends StatelessWidget {
+  const NoSelectedVideoText({super.key});
 
   @override
   Widget build(BuildContext context) {
