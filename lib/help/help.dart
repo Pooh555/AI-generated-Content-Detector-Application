@@ -1,5 +1,4 @@
 import 'package:ai_generated_content_detector/themes/template.dart';
-import 'package:ai_generated_content_detector/themes/varaibles.dart';
 import 'package:flutter/material.dart';
 
 class Help extends StatefulWidget {
