@@ -44,6 +44,8 @@ class _GeminiPanelState extends State<GeminiPanel> {
     );
     _chat = _model.startChat();
 
+    history.add(ai.Content('model', [ai.TextPart("Hi! How can I help you?")]));
+
     _timer = Timer(const Duration(seconds: 5), () {
       setState(() {
         _showWarning = false;
