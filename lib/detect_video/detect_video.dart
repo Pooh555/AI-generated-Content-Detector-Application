@@ -21,6 +21,8 @@ class _DetectVideoState extends State<DetectVideo> {
   String videoTitle = "Big Bunny Tells a Story";
   String videoDesc = "Human-generated film";
   String noVideoSelectedText = "No video selected";
+  double maxVideoPlayerWidth = 400.0;
+  double maxVideoPlayerHeight = 300.0;
 
   @override
   void initState() {
@@ -29,7 +31,6 @@ class _DetectVideoState extends State<DetectVideo> {
       VideoPlayerController.networkUrl(
         Uri.parse(
             "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"),
-        // Removed VideoPlayerOptions here
       ),
     );
   }
@@ -39,7 +40,7 @@ class _DetectVideoState extends State<DetectVideo> {
       _controller!.dispose();
     }
     _controller = newController;
-    _controller!.setLooping(true); // Enable looping here
+    _controller!.setLooping(true);
     _controller!.initialize().then((_) {
       setState(() {
         _controller!.play();
@@ -59,7 +60,6 @@ class _DetectVideoState extends State<DetectVideo> {
         _initializeController(
           VideoPlayerController.file(
             _videoFile!,
-            // Removed VideoPlayerOptions here
           ),
         );
       });
@@ -98,9 +98,15 @@ class _DetectVideoState extends State<DetectVideo> {
                           children: [
                             ClipRRect(
                               borderRadius: BorderRadius.circular(12.0),
-                              child: AspectRatio(
-                                aspectRatio: _controller!.value.aspectRatio,
-                                child: VideoPlayer(_controller!),
+                              child: ConstrainedBox(
+                                constraints: BoxConstraints(
+                                  maxWidth: maxVideoPlayerWidth,
+                                  maxHeight: maxVideoPlayerHeight,
+                                ),
+                                child: AspectRatio(
+                                  aspectRatio: _controller!.value.aspectRatio,
+                                  child: VideoPlayer(_controller!),
+                                ),
                               ),
                             ),
                             Padding(
