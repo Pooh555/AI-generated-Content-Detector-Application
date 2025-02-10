@@ -39,7 +39,7 @@ class _GeminiPanelState extends State<GeminiPanel> {
   void initState() {
     super.initState();
     _model = ai.GenerativeModel(
-      model: 'gemini-pro',
+      model: 'gemini-2.0-pro-exp-02-05',
       apiKey: apiKey,
     );
     _chat = _model.startChat();
