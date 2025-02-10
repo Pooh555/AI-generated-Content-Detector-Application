@@ -115,7 +115,12 @@ class _DetectImageState extends State<DetectImage> {
                 ],
               ),
               const SizedBox(height: 20),
-              _image == null ? NoSelectedImageText() : Image.file(_image!),
+              _image == null
+                  ? NoSelectedImageText()
+                  : ClipRRect(
+                      borderRadius: BorderRadius.circular(11.75),
+                      child: Image.file(_image!),
+                    ),
               const SizedBox(height: 20),
               ElevatedButton(
                   onPressed:

@@ -20,6 +20,7 @@ class _DetectVideoState extends State<DetectVideo> {
   File? _videoFile;
   String videoTitle = "Big Bunny Tells a Story";
   String videoDesc = "Human-generated film";
+  String noVideoSelectedText = "No video selected";
 
   @override
   void initState() {
@@ -49,8 +50,9 @@ class _DetectVideoState extends State<DetectVideo> {
     if (pickedFile != null) {
       setState(() {
         _videoFile = File(pickedFile.path);
-        videoTitle = "";
-        videoDesc = "";
+        videoTitle = '';
+        videoDesc = '';
+        noVideoSelectedText = '';
         _initializeController(
           VideoPlayerController.file(_videoFile!),
         );
@@ -123,6 +125,8 @@ class _DetectVideoState extends State<DetectVideo> {
                 style: elevatedButtonThemeData.style,
                 child: const UploadVideoText(title: "Upload a Video"),
               ),
+              SizedBox(height: 15),
+              NoSelectedVideoText(title: noVideoSelectedText)
               // if (_videoFile != null)
               //   Padding(
               //     padding: const EdgeInsets.all(8.0),

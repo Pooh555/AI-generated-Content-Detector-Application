@@ -54,7 +54,8 @@ class UploadVideoText extends StatelessWidget {
 }
 
 class NoSelectedVideoText extends StatelessWidget {
-  const NoSelectedVideoText({super.key});
+  const NoSelectedVideoText({super.key, required this.title});
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +67,7 @@ class NoSelectedVideoText extends StatelessWidget {
       text: TextSpan(
         children: <TextSpan>[
           TextSpan(
-            text: "No image selected",
+            text: title,
             style: textTheme.bodySmall?.copyWith(
                 fontStyle: FontStyle.italic, color: colorScheme.onSecondary),
           ),
