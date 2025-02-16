@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:ai_generated_content_detector/detect_image/text.dart';
 import 'package:ai_generated_content_detector/home/carousel.dart';
+import 'package:ai_generated_content_detector/keys.dart';
 import 'package:ai_generated_content_detector/themes/path.dart';
 import 'package:ai_generated_content_detector/themes/template.dart';
 import 'package:ai_generated_content_detector/themes/varaibles.dart';
@@ -45,10 +46,8 @@ class _DetectImageState extends State<DetectImage> {
     });
 
     try {
-      var request = http.MultipartRequest(
-          'POST',
-          Uri.parse(
-              'http://172.30.45.80:5000/classify_image')); // Server IP address
+      var request = http.MultipartRequest('POST',
+          Uri.parse("$serverAddress/classify_image")); // Server IP address
       request.files.add(await http.MultipartFile.fromPath(
           'image', _imageFile!.path)); // 'image' key must match Flask endpoint
 
