@@ -15,11 +15,11 @@ class IntroductionText extends StatelessWidget {
         text: TextSpan(
           children: <TextSpan>[
             TextSpan(
-              text: "Genuine or Generated?\n",
+              text: "Real or Fake?\n",
               style: textTheme.headlineMedium,
             ),
             TextSpan(
-              text: "Let's find out!",
+              text: "Reveal the reality!",
               style: textTheme.bodySmall?.copyWith(
                   fontStyle: FontStyle.italic, color: colorScheme.onSecondary),
             ),
@@ -30,8 +30,8 @@ class IntroductionText extends StatelessWidget {
   }
 }
 
-class UploadImageText extends StatelessWidget {
-  const UploadImageText({super.key, required this.title});
+class UploadVideoText extends StatelessWidget {
+  const UploadVideoText({super.key, required this.title});
 
   final String title;
 
@@ -53,8 +53,9 @@ class UploadImageText extends StatelessWidget {
   }
 }
 
-class NoSelectedImageText extends StatelessWidget {
-  const NoSelectedImageText({super.key});
+class NoSelectedVideoText extends StatelessWidget {
+  const NoSelectedVideoText({super.key, required this.title});
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +67,7 @@ class NoSelectedImageText extends StatelessWidget {
       text: TextSpan(
         children: <TextSpan>[
           TextSpan(
-            text: "No image selected",
+            text: title,
             style: textTheme.bodySmall?.copyWith(
                 fontStyle: FontStyle.italic, color: colorScheme.onSecondary),
           ),

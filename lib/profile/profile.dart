@@ -13,6 +13,10 @@ class _ProfileState extends State<Profile> {
   @override
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: MyAppbar(title: "Profile"), body: Container());
+    return Scaffold(
+        appBar: MyAppbar(title: "Profile"),
+        body: ApologyText(
+            title:
+                "This feature is being developed.\n\nWe apologize for the inconvenience."));
   }
 }

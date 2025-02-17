@@ -1,26 +1,26 @@
 import 'dart:io';
 
-import 'package:ai_generated_content_detector/detect_video/text.dart';
+import 'package:ai_generated_content_detector/detect_audio/text.dart';
 import 'package:ai_generated_content_detector/themes/template.dart';
 import 'package:ai_generated_content_detector/themes/varaibles.dart';
 import 'package:flutter/material.dart';
-import 'package:video_player/video_player.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:video_player/video_player.dart';
 
-class DetectVideo extends StatefulWidget {
-  const DetectVideo({super.key, required this.title});
+class DetectAudio extends StatefulWidget {
+  const DetectAudio({super.key, required this.title});
   final String title;
 
   @override
-  State<DetectVideo> createState() => _DetectVideoState();
+  State<DetectAudio> createState() => _DetectAudioState();
 }
 
-class _DetectVideoState extends State<DetectVideo> {
+class _DetectAudioState extends State<DetectAudio> {
   VideoPlayerController? _controller;
   File? _videoFile;
   String videoTitle = "Big Bunny Tells a Story";
-  String videoDesc = "Human-generated film";
-  String noVideoSelectedText = "No video selected";
+  String videoDesc = "Human-generated audio";
+  String noVideoSelectedText = "No Audio selected";
   double maxVideoPlayerWidth = 400.0;
   double maxVideoPlayerHeight = 300.0;
 
@@ -79,7 +79,7 @@ class _DetectVideoState extends State<DetectVideo> {
         Theme.of(context).elevatedButtonTheme;
 
     return Scaffold(
-      appBar: MyAppbar(title: "Analyze Video"),
+      appBar: MyAppbar(title: "Analyze Audio"),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.all(screenBorderMargin),
@@ -135,17 +135,17 @@ class _DetectVideoState extends State<DetectVideo> {
               ElevatedButton(
                 onPressed: () => _pickVideo(ImageSource.gallery),
                 style: elevatedButtonThemeData.style,
-                child: const UploadVideoText(title: "Upload a Video"),
+                child: const UploadAudioText(title: "Upload an Audio"),
               ),
               SizedBox(height: 15),
-              NoSelectedVideoText(title: noVideoSelectedText),
+              NoSelectedAudioText(title: noVideoSelectedText),
               SizedBox(height: 15),
               ElevatedButton(
                 onPressed: () {
                   // TODO: Send the video the the server
                   // print('Submitted: $video');
                 },
-                child: UploadVideoText(title: "Check your video"),
+                child: UploadAudioText(title: "Check your Audio"),
               ),
             ],
           ),

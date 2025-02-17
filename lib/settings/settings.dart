@@ -13,6 +13,10 @@ class _SettingsState extends State<Settings> {
   @override
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: MyAppbar(title: "Settings"), body: Container());
+    return Scaffold(
+        appBar: MyAppbar(title: "Settings"),
+        body: ApologyText(
+            title:
+                "This feature is being developed.\n\nWe apologize for the inconvenience."));
   }
 }

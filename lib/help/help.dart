@@ -11,8 +11,11 @@ class Help extends StatefulWidget {
 
 class _HelpState extends State<Help> {
   @override
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: MyAppbar(title: "Help"), body: Container());
+    return Scaffold(
+        appBar: MyAppbar(title: "Help"),
+        body: ApologyText(
+            title:
+                "This feature is being developed.\n\nWe apologize for the inconvenience."));
   }
 }

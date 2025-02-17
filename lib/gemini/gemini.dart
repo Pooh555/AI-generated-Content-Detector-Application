@@ -39,10 +39,12 @@ class _GeminiPanelState extends State<GeminiPanel> {
   void initState() {
     super.initState();
     _model = ai.GenerativeModel(
-      model: 'gemini-pro',
+      model: 'gemini-2.0-pro-exp-02-05',
       apiKey: apiKey,
     );
     _chat = _model.startChat();
+
+    history.add(ai.Content('model', [ai.TextPart("Hi! How can I help you?")]));
 
     _timer = Timer(const Duration(seconds: 5), () {
       setState(() {
@@ -102,6 +104,9 @@ class _GeminiPanelState extends State<GeminiPanel> {
                   child: SizedBox(
                     height: 50,
                     child: TextField(
+                      style: textTheme.bodyMedium?.copyWith(
+                          fontWeight: FontWeight.normal,
+                          color: colorScheme.primary),
                       controller: _textController,
                       autofocus: true,
                       focusNode: _textFieldFocus,
