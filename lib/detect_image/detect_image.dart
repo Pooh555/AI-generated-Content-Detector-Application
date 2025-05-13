@@ -182,7 +182,7 @@ class _DetectImageState extends State<DetectImage> {
 
     try {
       var request = http.MultipartRequest(
-          'POST', Uri.parse("$serverAddress/classify_image"));
+          'POST', Uri.parse("$serverAddress:5000/classify_image"));
       request.files
           .add(await http.MultipartFile.fromPath('image', _imageFile!.path));
 

@@ -280,7 +280,9 @@ class _DetectAudioState extends State<DetectAudio> {
       _statusUpdate("Analyzing audio...");
     });
 
-    final audioServerUrl = "$serverAddress/classify_audio";
+    // TODO: fix
+    final audioServerUrl = "http://172.30.45.80:5001/classify_audio";
+    // final audioServerUrl = "$serverAddress:5001/classify_audio";
 
     try {
       var request = http.MultipartRequest('POST', Uri.parse(audioServerUrl));
