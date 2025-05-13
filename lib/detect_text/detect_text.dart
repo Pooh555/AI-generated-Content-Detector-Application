@@ -32,14 +32,22 @@ class _DetectTextState extends State<DetectText> {
   String _statusMessage = "";
   bool _isAnalyzing = false;
 
-  // --- Removed Minimum word count constant ---
-  // final int _minimumWordCount = 30;
-
   @override
   void initState() {
     super.initState();
     // --- Updated initial status message ---
     _updateStatus("Enter text to analyze.");
+    // Add a listener to the text controller to update the UI when text changes
+    _textController.addListener(_onTextChanged);
+  }
+
+  // Callback for text controller listener
+  void _onTextChanged() {
+    // Call setState to rebuild the widget and update the button's enabled state
+    setState(() {
+      // You don't necessarily need to do anything specific here,
+      // just triggering a rebuild is enough for the button state to update.
+    });
   }
 
   // Helper to update status message and clear results
@@ -57,18 +65,7 @@ class _DetectTextState extends State<DetectText> {
     final text = _textController.text
         .trim(); // Get text and remove leading/trailing whitespace
 
-    // --- Removed Minimum word count check ---
-    // final wordCount = text
-    //     .split(RegExp(r'\s+'))
-    //     .where((w) => w.isNotEmpty)
-    //     .length;
-    // if (wordCount < _minimumWordCount) {
-    //   _updateStatus(
-    //       "Please enter at least $_minimumWordCount words. You have $wordCount words.");
-    //   return;
-    // }
-
-    // Basic check if text is empty after trimming
+    // Basic check if text is empty after trimming (already handled by button state, but good for safety)
     if (text.isEmpty) {
       _updateStatus("Please enter some text to analyze.");
       return;
@@ -130,6 +127,8 @@ class _DetectTextState extends State<DetectText> {
 
   @override
   void dispose() {
+    // Remove the listener when the widget is disposed
+    _textController.removeListener(_onTextChanged);
     // Dispose the controller when the widget is removed
     _textController.dispose();
     super.dispose();
@@ -142,6 +141,7 @@ class _DetectTextState extends State<DetectText> {
         Theme.of(context).elevatedButtonTheme;
 
     // Get the current text from the controller to check if it's empty
+    // This will now be re-evaluated correctly whenever setState is called by the listener
     final currentText = _textController.text.trim();
     final bool isTextEmpty = currentText.isEmpty;
 
@@ -166,8 +166,15 @@ class _DetectTextState extends State<DetectText> {
               InputTextField(
                   controller: _textController), // Pass the controller
 
-              SizedBox(height: 20), // Space before button
-
+              Padding(
+                padding: const EdgeInsets.only(top: 20.0),
+                child: Text(
+                  'The text must be atleast 30 words long.',
+                  style: textTheme.titleMedium,
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              SizedBox(height: 15),
               // Analyze Button
               ElevatedButton(
                 // Disable if analyzing or text is empty
@@ -190,7 +197,11 @@ class _DetectTextState extends State<DetectText> {
                     _statusMessage,
                     style: _statusMessage.startsWith("Error:") ||
                             _statusMessage.startsWith(
-                                "Please enter some text") // Added empty text check
+                                "Server Error:") || // Added server error check
+                            _statusMessage ==
+                                "Please enter some text to analyze." || // Specific check
+                            _statusMessage.startsWith(
+                                "Please enter at least") // For word count errors if you re-add them
                         ? textTheme.titleMedium!.copyWith(
                             color:
                                 Colors.red) // Style errors/warnings differently
@@ -231,19 +242,6 @@ class _DetectTextState extends State<DetectText> {
                       textAlign: TextAlign.center,
                     ),
                   ],
-                ),
-
-              // Optional: Display initial prompt when nothing is happening and text is empty
-              if (!_isAnalyzing &&
-                  currentText.isEmpty &&
-                  _statusMessage.isEmpty)
-                Padding(
-                  padding: const EdgeInsets.only(top: 20.0),
-                  child: Text(
-                    'Enter text above to begin analysis.',
-                    style: textTheme.titleMedium,
-                    textAlign: TextAlign.center,
-                  ),
                 ),
             ],
           ),
