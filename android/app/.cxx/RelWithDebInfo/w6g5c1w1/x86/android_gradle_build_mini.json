@@ -1,0 +1,20 @@
+{
+  "buildFiles": [
+    "/run/media/pooh555/Anaconda/android_studio/flutter/packages/flutter_tools/gradle/src/main/groovy/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/run/media/pooh555/Anaconda/android_studio/cmake/3.22.1/bin/ninja",
+      "-C",
+      "/home/pooh555/coding/ai_generated_content_detector/android/app/.cxx/RelWithDebInfo/w6g5c1w1/x86",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/run/media/pooh555/Anaconda/android_studio/cmake/3.22.1/bin/ninja",
+    "-C",
+    "/home/pooh555/coding/ai_generated_content_detector/android/app/.cxx/RelWithDebInfo/w6g5c1w1/x86",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {}
+}
