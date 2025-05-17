@@ -263,7 +263,7 @@ class _DetectImageState extends State<DetectImage> {
                   );
                   final Size renderedSize = fittedSizes.destination;
 
-                  return Container(
+                  return SizedBox(
                     width: constraints.maxWidth,
                     height:
                         renderedSize.height > 0 ? renderedSize.height : null,

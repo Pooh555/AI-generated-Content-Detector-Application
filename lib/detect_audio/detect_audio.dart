@@ -19,12 +19,12 @@ class AudioClassificationBar extends StatelessWidget {
   final double currentPlaybackPosition; // Current playback position in seconds
 
   const AudioClassificationBar({
-    Key? key,
+    super.key,
     required this.segmentResults,
     required this.totalDuration,
     this.barHeight = 20.0, // Default bar height
     required this.currentPlaybackPosition,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -557,7 +557,8 @@ class _DetectAudioState extends State<DetectAudio> {
           CrossAxisAlignment.start, // Align legend items to the start
       children: [
         Text("Legend:",
-            style: textTheme.titleLarge!.copyWith(fontWeight: FontWeight.bold)),
+            style: textTheme.headlineMedium!
+                .copyWith(fontWeight: FontWeight.bold)),
         SizedBox(height: 5),
         _buildLegendItem(Colors.green, "Human", textTheme),
         _buildLegendItem(Colors.red, "AI-generated", textTheme),

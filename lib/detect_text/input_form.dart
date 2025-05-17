@@ -29,8 +29,9 @@ class _InputTextFieldState extends State<InputTextField> {
     // Initialize _currentLines based on the initial text in the controller
     _currentLines = widget.controller.text.split('\n').length;
     if (_currentLines < 5) _currentLines = 5; // Ensure minimum 5 lines
-    if (_currentLines > maxTextLine)
+    if (_currentLines > maxTextLine) {
       _currentLines = maxTextLine; // Ensure max lines
+    }
   }
 
   @override
