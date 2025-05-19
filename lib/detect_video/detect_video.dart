@@ -565,12 +565,12 @@ class _DetectVideoState extends State<DetectVideo> {
                               : Colors.red[700]),
                       textAlign: TextAlign.center,
                     ),
-                    SizedBox(height: 10),
-                    Text(
-                      "Confidence: $_overallConfidence",
-                      style: textTheme.titleMedium,
-                      textAlign: TextAlign.center,
-                    ),
+                    // SizedBox(height: 10),
+                    // Text(
+                    //   "Confidence: $_overallConfidence",
+                    //   style: textTheme.titleMedium,
+                    //   textAlign: TextAlign.center,
+                    // ),
                     SizedBox(height: 20), // Space before segment bar/title
                     Divider(), // Separator
                     SizedBox(height: 20),
