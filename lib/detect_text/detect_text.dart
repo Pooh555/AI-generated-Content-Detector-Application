@@ -1,9 +1,8 @@
 // text.dart
 
 import 'dart:convert'; // Import for json encoding/decoding
+import 'package:ai_generated_content_detector/detect_text/text.dart';
 import 'package:http/http.dart' as http; // Import for making HTTP requests
-
-// Assuming these imports are correct based on your project structure
 import 'package:ai_generated_content_detector/detect_text/input_form.dart'; // Assuming InputTextField is here
 import 'package:ai_generated_content_detector/home/carousel.dart'; // Assuming CarouselPanel is here
 import 'package:ai_generated_content_detector/themes/path.dart'; // Assuming detectTextCarouselImagesPaths are here
@@ -190,6 +189,7 @@ class _DetectTextState extends State<DetectText> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch, // Stretch children
             children: [
+              IntroductionText(),
               SizedBox(height: 15),
               CarouselPanel(
                 carouselImages: detectTextCarouselImagesPaths,

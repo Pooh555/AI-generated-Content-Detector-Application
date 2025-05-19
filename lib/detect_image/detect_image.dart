@@ -240,7 +240,7 @@ class _DetectImageState extends State<DetectImage> {
               SizedBox(height: 15),
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   ElevatedButton(
                       onPressed: () => _pickImage(ImageSource.gallery),
