@@ -1,5 +1,3 @@
-// detect_video.dart
-
 import 'dart:io';
 import 'dart:convert';
 import 'package:ai_generated_content_detector/detect_video/text.dart';
@@ -14,42 +12,30 @@ import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 import 'package:image_picker/image_picker.dart';
 
-// --- Widget to display the colored video bar based on classification results ---
 class VideoClassificationBar extends StatelessWidget {
   final List<Map<String, dynamic>> segmentResults;
-  final double totalDuration; // Total duration of the video in seconds
-  final double barHeight; // Height of the bar
-  final Duration
-      currentPlaybackPosition; // Current playback position from VideoPlayer
+  final double totalDuration;
+  final double barHeight;
+  final Duration currentPlaybackPosition;
 
   const VideoClassificationBar({
     super.key,
     required this.segmentResults,
     required this.totalDuration,
-    this.barHeight = 30.0, // Increased height slightly for better visibility
+    this.barHeight = 30.0,
     required this.currentPlaybackPosition,
   });
 
   @override
   Widget build(BuildContext context) {
     if (segmentResults.isEmpty || totalDuration <= 0) {
-      return Container(); // Don't show the bar if no results or zero duration
+      return Container();
     }
 
-    // Use the actual total duration from the video player if it's available and greater
-    // This handles potential slight differences between CV2 duration and player duration
-    // For accurate playback indicator positioning
-    // final double effectiveTotalDuration = playerTotalDuration.inMilliseconds / 1000.0 > totalDuration
-    //     ? playerTotalDuration.inMilliseconds / 1000.0
-    //     : totalDuration; // Use server duration if player duration is less or unavailable
+    final double effectiveTotalDuration = totalDuration;
 
-    final double effectiveTotalDuration =
-        totalDuration; // Stick to server duration for bar scaling
-
-    // Calculate the position of the playback indicator along the bar's width
     final double currentPositionInSeconds =
         currentPlaybackPosition.inMilliseconds / 1000.0;
-    // Clamp position to be within duration for indicator placement
     final double clampedPosition =
         currentPositionInSeconds.clamp(0.0, effectiveTotalDuration);
 
@@ -57,7 +43,6 @@ class VideoClassificationBar extends StatelessWidget {
       builder: (context, constraints) {
         final double maxWidth = constraints.maxWidth;
 
-        // Calculate indicator position in pixels relative to the bar width
         final double indicatorPixelPosition =
             (clampedPosition / effectiveTotalDuration) * maxWidth;
 
@@ -67,11 +52,10 @@ class VideoClassificationBar extends StatelessWidget {
             borderRadius: BorderRadius.circular(4.0),
             border: Border.all(color: Colors.grey[700]!),
           ),
-          clipBehavior: Clip.antiAlias, // Clip children like the Row and Stack
+          clipBehavior: Clip.antiAlias,
           child: Stack(
             children: [
               Row(
-                // The colored segments
                 children: segmentResults.map((result) {
                   final start =
                       (result['start_time'] as num?)?.toDouble() ?? 0.0;
@@ -82,65 +66,46 @@ class VideoClassificationBar extends StatelessWidget {
                   final label = result['label'];
                   final double confidenceScore =
                       (result['confidence_score'] as num?)?.toDouble() ?? 0.0;
-                  final String status = result['status'] ??
-                      'unknown'; // e.g., 'success', 'no_frames', 'error'
+                  final String status = result['status'] ?? 'unknown';
 
                   if (status != 'success') {
-                    // Handle non-successful segments (e.g., no frames extracted, error)
-                    segmentColor =
-                        Colors.grey; // Grey for any non-classified segment
+                    segmentColor = Colors.grey;
                   } else {
-                    // status is 'success' - use label and confidence
                     Color baseColor;
                     if (label == 'AI-generated') {
                       baseColor = Colors.red;
                     } else if (label == 'Human-made') {
-                      // Note: Use "Human-made" from server
                       baseColor = Colors.green;
                     } else {
-                      baseColor =
-                          Colors.grey[600]!; // Fallback for unknown label
+                      baseColor = Colors.grey[600]!;
                     }
 
-                    // Define a neutral color for 0 confidence
                     final Color neutralColor = Colors.grey[300]!;
 
-                    // Interpolate color based on confidence score (clamped 0.0 to 1.0)
                     final double clampedConfidence =
                         confidenceScore.clamp(0.0, 1.0);
                     segmentColor =
                         Color.lerp(neutralColor, baseColor, clampedConfidence)!;
                   }
 
-                  // Calculate the width for this segment in pixels
-                  // Ensure the width is proportional to its duration
                   final double segmentWidth =
                       (segmentDuration / effectiveTotalDuration) * maxWidth;
 
-                  // Use Flexible with tight fit to ensure it takes exactly the calculated width
-                  // Using flex in Expanded can sometimes lead to rounding issues depending on total width and number of segments
-                  // Flexible(flex: (segmentDuration * 10000).round(), ...) is an alternative
                   return Container(
                     width: segmentWidth.isFinite && segmentWidth >= 0
                         ? segmentWidth
-                        : 0.0, // Handle potential NaN or negative widths
+                        : 0.0,
                     color: segmentColor,
-                    // Optional: Add tooltip or gesture detector
-                    // child: Tooltip(message: "$label (${(confidenceScore*100).toStringAsFixed(1)}%)"),
                   );
                 }).toList(),
               ),
-              // --- Playback Indicator ---
               Positioned(
-                // Position the indicator horizontally
-                // Clamp to ensure it stays within the bounds of the bar
-                left: indicatorPixelPosition.clamp(
-                    0.0, maxWidth - 2.0), // Adjust clamp by indicator width
+                left: indicatorPixelPosition.clamp(0.0, maxWidth - 2.0),
                 top: 0,
                 bottom: 0,
-                width: 2.0, // Thickness of the indicator line
+                width: 2.0,
                 child: Container(
-                  color: Colors.blueAccent, // Color of the indicator
+                  color: Colors.blueAccent,
                 ),
               ),
             ],
@@ -162,21 +127,17 @@ class DetectVideo extends StatefulWidget {
 class _DetectVideoState extends State<DetectVideo> {
   VideoPlayerController? _controller;
   File? _videoFile;
-  String _videoFileName = ""; // To display the name of the picked file
+  String _videoFileName = "";
 
-  // State variables for analysis process and results
   String _analysisStatus = "Select a video to analyze.";
   bool _isAnalyzing = false;
-  String _overallLabel = ""; // Changed from _resultLabel to be clearer
-  String _overallConfidence = ""; // Changed from _resultConfidence
+  String _overallLabel = "";
+  String _overallConfidence = "";
 
-  // State variables for segmented results and duration
   List<Map<String, dynamic>> _segmentResults = [];
-  double _totalVideoDuration = 0.0; // Total duration in seconds from server
+  double _totalVideoDuration = 0.0;
 
-  // State variables for video player position and total duration
   Duration _currentPlaybackPosition = Duration.zero;
-  // _controller!.value.duration gives total duration from player
 
   double maxVideoPlayerWidth = 400.0;
   double maxVideoPlayerHeight = 300.0;
@@ -184,7 +145,6 @@ class _DetectVideoState extends State<DetectVideo> {
   @override
   void initState() {
     super.initState();
-    // Initialize with a default network video or keep empty if you prefer
     _initializeController(
       VideoPlayerController.networkUrl(
         Uri.parse(
@@ -195,26 +155,20 @@ class _DetectVideoState extends State<DetectVideo> {
   }
 
   void _initializeController(VideoPlayerController newController) {
-    // Dispose the old controller and remove listener BEFORE initializing new one
     if (_controller != null) {
-      _controller!.removeListener(_updatePlaybackPosition); // Remove listener
+      _controller!.removeListener(_updatePlaybackPosition);
       _controller!.dispose();
     }
     _controller = newController;
     _controller!.setLooping(true);
 
-    // Add listener for playback position *before* initialization completes
-    // This ensures we don't miss initial events if initialize is fast
     _controller!.addListener(_updatePlaybackPosition);
 
     _controller!.initialize().then((_) {
       setState(() {
-        // Optional: Autoplay the initial video, but maybe not the selected one
         if (_videoFile == null) {
-          // Only play initial video on init
           _controller!.play();
         }
-        // Ensure position listener is active - already added above
       });
     }).catchError((error) {
       print("Error initializing video player: $error");
@@ -222,18 +176,14 @@ class _DetectVideoState extends State<DetectVideo> {
           isError: true);
       _videoFile = null;
       _videoFileName = "";
-      // Explicitly clear controller state on error
       _controller = null;
-      _currentPlaybackPosition = Duration.zero; // Reset position state
-      setState(() {}); // Trigger rebuild to show error placeholder
+      _currentPlaybackPosition = Duration.zero;
+      setState(() {});
     });
   }
 
-  // Listener function to update playback position
   void _updatePlaybackPosition() {
     if (_controller != null && _controller!.value.isInitialized) {
-      // Only update state if the position has actually changed
-      // This prevents unnecessary rebuilds
       if (_currentPlaybackPosition != _controller!.value.position) {
         setState(() {
           _currentPlaybackPosition = _controller!.value.position;
@@ -242,17 +192,14 @@ class _DetectVideoState extends State<DetectVideo> {
     }
   }
 
-  // Helper to update analysis status and clear results/segments
   void _updateStatus(String message, {bool isError = false}) {
     setState(() {
       _analysisStatus = message;
-      // Clear results and segments when status changes unless it's the final 'Analysis Complete' status
       if (!message.startsWith("Analysis Complete")) {
         _overallLabel = "";
         _overallConfidence = "";
-        _segmentResults = []; // Clear segments
-        _totalVideoDuration = 0.0; // Reset duration
-        // Playback position is handled by the listener
+        _segmentResults = [];
+        _totalVideoDuration = 0.0;
       }
     });
   }
@@ -267,14 +214,12 @@ class _DetectVideoState extends State<DetectVideo> {
       setState(() {
         _videoFile = file;
         _videoFileName = p.basename(file.path);
-        // Clear previous analysis results, segments, and status
         _overallLabel = "";
         _overallConfidence = "";
         _segmentResults = [];
         _totalVideoDuration = 0.0;
         _analysisStatus = "Video selected: $_videoFileName";
-        _currentPlaybackPosition =
-            Duration.zero; // Reset playback position on new pick
+        _currentPlaybackPosition = Duration.zero;
 
         _initializeController(
           VideoPlayerController.file(
@@ -283,7 +228,6 @@ class _DetectVideoState extends State<DetectVideo> {
         );
       });
     } else {
-      // User cancelled picking
       _updateStatus(_videoFile == null
           ? "Select a video to analyze."
           : "Video selected: $_videoFileName");
@@ -297,18 +241,16 @@ class _DetectVideoState extends State<DetectVideo> {
     }
     if (_isAnalyzing) return;
 
-    // Stop video playback when analysis starts
     _controller?.pause();
 
     setState(() {
       _isAnalyzing = true;
       _updateStatus("Uploading video...");
-      // Ensure results and segments are clear from previous analysis
       _overallLabel = "";
       _overallConfidence = "";
       _segmentResults = [];
       _totalVideoDuration = 0.0;
-      _currentPlaybackPosition = Duration.zero; // Reset position display
+      _currentPlaybackPosition = Duration.zero;
     });
 
     final videoServerUrl = "$serverAddress:5003/classify_video";
@@ -332,7 +274,6 @@ class _DetectVideoState extends State<DetectVideo> {
       final responseBody = json.decode(response.body);
       print("Response body decoded.");
 
-      // Process the server response
       if (response.statusCode == 200 && responseBody['status'] == 'success') {
         final overallResult = responseBody['overall_result'];
         final segmentResults = responseBody['segment_results'];
@@ -344,55 +285,45 @@ class _DetectVideoState extends State<DetectVideo> {
           setState(() {
             _overallLabel = overallResult['label'] ?? "N/A";
             _overallConfidence = overallResult['confidence'] ?? "N/A";
-            // Ensure segment results are treated as a list of maps
             _segmentResults = List<Map<String, dynamic>>.from(segmentResults);
-            _totalVideoDuration =
-                (totalDuration as num).toDouble(); // Ensure it's double
+            _totalVideoDuration = (totalDuration as num).toDouble();
             _analysisStatus = "Analysis Complete:";
           });
           print("Analysis results and segments updated.");
-
-          // Optional: Automatically play video after analysis?
-          // _controller?.play();
         } else {
           print(
               "Warning: Missing data in successful response (overall, segments, or duration).");
           _updateStatus(
               "Analysis complete, but missing data in server response.",
               isError: true);
-          // Clear potentially partial results
           _overallLabel = "";
           _overallConfidence = "";
           _segmentResults = [];
           _totalVideoDuration = 0.0;
-          setState(() {}); // Ensure UI updates
+          setState(() {});
         }
       } else {
-        // Handle server error or status not success
         print("Server returned error status or non-200 code.");
         final errorMessage = responseBody['message'] ?? "Unknown server error.";
         _updateStatus("Server Error: ${response.statusCode} - $errorMessage",
             isError: true);
-        // Ensure results and segments are cleared on server error
         _overallLabel = "";
         _overallConfidence = "";
         _segmentResults = [];
         _totalVideoDuration = 0.0;
-        setState(() {}); // Ensure UI updates
+        setState(() {});
       }
     } catch (e) {
-      // Handle network or other exceptions
       print("Error during HTTP request or processing: $e");
       _updateStatus("Error analyzing video: ${e.toString()}", isError: true);
-      // Ensure results and segments are cleared on exception
       _overallLabel = "";
       _overallConfidence = "";
       _segmentResults = [];
       _totalVideoDuration = 0.0;
-      setState(() {}); // Ensure UI updates
+      setState(() {});
     } finally {
       setState(() {
-        _isAnalyzing = false; // Always set analyzing state to false
+        _isAnalyzing = false;
       });
       print("Analysis process finished.");
     }
@@ -400,7 +331,6 @@ class _DetectVideoState extends State<DetectVideo> {
 
   @override
   void dispose() {
-    // Remove listener before disposing the controller
     _controller?.removeListener(_updatePlaybackPosition);
     _controller?.dispose();
     super.dispose();
@@ -425,8 +355,6 @@ class _DetectVideoState extends State<DetectVideo> {
             children: <Widget>[
               IntroductionText(),
               SizedBox(height: 15),
-
-              // Video Player Area
               DecoratedBox(
                 decoration: BoxDecoration(
                   color: colorScheme.surfaceVariant,
@@ -463,17 +391,12 @@ class _DetectVideoState extends State<DetectVideo> {
                   ),
                 ),
               ),
-              SizedBox(height: 10), // Spacing below player
-
-              // --- Play/Pause Button and Position Display ---
-              // Show these only if a video controller is initialized
+              SizedBox(height: 10),
               if (_controller != null && _controller!.value.isInitialized)
                 Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 8.0), // Match bar padding
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   child: Row(
-                    mainAxisAlignment:
-                        MainAxisAlignment.center, // Center the row content
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       IconButton(
                         icon: Icon(
@@ -490,7 +413,7 @@ class _DetectVideoState extends State<DetectVideo> {
                           });
                         },
                       ),
-                      SizedBox(width: 8), // Space between button and text
+                      SizedBox(width: 8),
                       Text(
                         '${_currentPlaybackPosition.inMinutes}:${(_currentPlaybackPosition.inSeconds % 60).toString().padLeft(2, '0')} / '
                         '${_controller!.value.duration.inMinutes}:${(_controller!.value.duration.inSeconds % 60).toString().padLeft(2, '0')}',
@@ -499,13 +422,11 @@ class _DetectVideoState extends State<DetectVideo> {
                     ],
                   ),
                 ),
-
               SizedBox(
                   height:
                       _controller != null && _controller!.value.isInitialized
                           ? 15
-                          : 0), // Conditional spacing
-
+                          : 0),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -518,8 +439,6 @@ class _DetectVideoState extends State<DetectVideo> {
                       child:
                           const UploadVideoText(title: "Select a Video File")),
                   SizedBox(height: 15),
-
-                  // Display selected video file name or initial status
                   Text(
                     _analysisStatus,
                     style: textTheme.titleMedium?.copyWith(
@@ -529,29 +448,22 @@ class _DetectVideoState extends State<DetectVideo> {
                     textAlign: TextAlign.center,
                   ),
                   SizedBox(height: 15),
-
-                  // Analyze Button
                   ElevatedButton(
                     onPressed: enableAnalyzeButton ? _analyzeVideo : null,
                     style: elevatedButtonThemeData.style,
                     child: _isAnalyzing
                         ? const CircularProgressIndicator(color: Colors.white)
-                        : const UploadVideoText(
-                            title: "Upload and Analyze"), // Changed button text
+                        : const UploadVideoText(title: "Upload and Analyze"),
                   ),
                 ],
               ),
-
               SizedBox(height: 20),
-
-              // --- Overall Analysis Results Display ---
-              // Show overall results only if they are available
               if (_overallLabel.isNotEmpty)
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      "Overall Classification Result:", // Changed title
+                      "Overall Classification Result:",
                       style: textTheme.titleLarge,
                       textAlign: TextAlign.center,
                     ),
@@ -565,47 +477,28 @@ class _DetectVideoState extends State<DetectVideo> {
                               : Colors.red[700]),
                       textAlign: TextAlign.center,
                     ),
-                    // SizedBox(height: 10),
-                    // Text(
-                    //   "Confidence: $_overallConfidence",
-                    //   style: textTheme.titleMedium,
-                    //   textAlign: TextAlign.center,
-                    // ),
-                    SizedBox(height: 20), // Space before segment bar/title
-                    Divider(), // Separator
                     SizedBox(height: 20),
-                    // Only show Segment Classification title if there are segments to show
+                    Divider(),
+                    SizedBox(height: 20),
                     if (_segmentResults.isNotEmpty)
                       Text(
                         "Segment Classification:",
                         style: textTheme.titleLarge,
                         textAlign: TextAlign.center,
                       ),
-                    SizedBox(
-                        height: _segmentResults.isNotEmpty
-                            ? 10
-                            : 0), // Conditional space
+                    SizedBox(height: _segmentResults.isNotEmpty ? 10 : 0),
                   ],
                 ),
-
-              // --- Video Classification Bar (Segment Visualization) ---
-              // Show the bar only if segment results are available AND video is initialized
               if (_segmentResults.isNotEmpty &&
                   _controller != null &&
                   _controller!.value.isInitialized)
                 VideoClassificationBar(
                   segmentResults: _segmentResults,
-                  totalDuration:
-                      _totalVideoDuration, // Use duration from server
-                  currentPlaybackPosition:
-                      _currentPlaybackPosition, // Pass current player position
-                  barHeight: 30.0, // Set desired bar height
+                  totalDuration: _totalVideoDuration,
+                  currentPlaybackPosition: _currentPlaybackPosition,
+                  barHeight: 30.0,
                 ),
-              SizedBox(
-                  height: _segmentResults.isNotEmpty
-                      ? 20
-                      : 0), // Conditional spacing after bar
-
+              SizedBox(height: _segmentResults.isNotEmpty ? 20 : 0),
               SizedBox(height: 50),
             ],
           ),
@@ -614,19 +507,3 @@ class _DetectVideoState extends State<DetectVideo> {
     );
   }
 }
-
-// Assuming UploadVideoText is defined like this somewhere (e.g., themes/template.dart or detect_video/upload_video_text.dart)
-// class UploadVideoText extends StatelessWidget {
-//   final String title;
-//   const UploadVideoText({Key? key, required this.title}) : super(key: key);
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     TextTheme textTheme = Theme.of(context).textTheme;
-//     // Use titleLarge here for consistency with ElevatedButton default
-//     return Text(
-//       title,
-//       style: textTheme.titleLarge,
-//     );
-//   }
-// }
