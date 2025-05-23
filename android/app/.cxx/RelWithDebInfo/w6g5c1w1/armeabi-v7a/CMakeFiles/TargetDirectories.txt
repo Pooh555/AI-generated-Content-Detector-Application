@@ -1,0 +1,2 @@
+/home/pooh555/coding/ai_generated_content_detector/android/app/.cxx/RelWithDebInfo/w6g5c1w1/armeabi-v7a/CMakeFiles/edit_cache.dir
+/home/pooh555/coding/ai_generated_content_detector/android/app/.cxx/RelWithDebInfo/w6g5c1w1/armeabi-v7a/CMakeFiles/rebuild_cache.dir

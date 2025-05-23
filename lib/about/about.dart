@@ -57,8 +57,7 @@ class _AboutState extends State<About> {
             const SizedBox(height: 8),
             InkWell(
               onTap: () async {
-                final Uri url = Uri.parse(
-                    "https://www.kaggle.com/competitions/detect-ai-vs-human-generated-images");
+                final Uri url = Uri.parse("https://www.infomatrix.ro/");
                 if (await canLaunchUrl(url)) {
                   await launchUrl(url);
                 } else {
@@ -69,8 +68,7 @@ class _AboutState extends State<About> {
                 text: TextSpan(
                   children: <TextSpan>[
                     TextSpan(
-                      text:
-                          "This project is an extension of a Kaggle competition.",
+                      text: "This project is competing in Infomatrix 2025.",
                       style: textTheme.bodySmall
                           ?.copyWith(color: colorScheme.tertiaryFixedDim),
                     ),
@@ -93,7 +91,7 @@ class _AboutState extends State<About> {
                 children: <TextSpan>[
                   TextSpan(
                       text:
-                          "The models used for identifying AI-generated content are listed below.",
+                          "The models used for identifying AI-generated content are located in the listed repository.",
                       style: textTheme.bodySmall),
                 ],
               ),
@@ -102,7 +100,7 @@ class _AboutState extends State<About> {
             InkWell(
               onTap: () async {
                 final Uri url = Uri.parse(
-                    "https://github.com/Pooh555/AI-vs-human-generated-image");
+                    "https://github.com/Pooh555/AI_vs_human_generated_content_models");
                 if (await canLaunchUrl(url)) {
                   await launchUrl(url);
                 } else {
@@ -113,7 +111,7 @@ class _AboutState extends State<About> {
                 text: TextSpan(
                   children: <TextSpan>[
                     TextSpan(
-                      text: "  - Image model (link)",
+                      text: " - All models source code",
                       style: textTheme.bodySmall
                           ?.copyWith(color: colorScheme.tertiaryFixedDim),
                     ),
